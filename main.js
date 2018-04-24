@@ -38,7 +38,7 @@ $(document).ready(function(){
 	}
 	
 	$("body").delegate(".category","click",function(event){
-		$("#get_product").html("<h3>Loading...</h3>");
+		$("#get_product");
 		event.preventDefault();
 		var cid = $(this).attr('cid');
 		
@@ -59,7 +59,7 @@ $(document).ready(function(){
 	
 	$("body").delegate(".selectBrand","click",function(event){
 		event.preventDefault();
-		$("#get_product").html("<h3>Loading...</h3>");
+		$("#get_product");
 		var bid = $(this).attr('bid');
 		
 			$.ajax({
@@ -77,7 +77,7 @@ $(document).ready(function(){
 	})
 	
 	$("#search_btn").click(function(){
-		$("#get_product").html("<h3>Loading...</h3>");
+		$("#get_product");
 		var keyword = $("#search").val();
 		if(keyword != ""){
 			$.ajax({
@@ -92,6 +92,8 @@ $(document).ready(function(){
 			}
 		})
 		}
+		
+		
 	})
 	
 

@@ -6,89 +6,15 @@ if(isset($_SESSION["uid"])){
 ?>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>		
-        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<script src="js/jquery2.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="main.js"></script>
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<style></style>
-	</head>
-<body>
-<div class="wait overlay">
-	<div class="loader"></div>
-</div>
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">	
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
-					<span class="sr-only">navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a href="#" class="navbar-brand">Vadaza</a>
-			</div>
-		<div class="collapse navbar-collapse" id="collapse">
-			<ul class="nav navbar-nav">
-				<li><a href="index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-				<li><a href="index.php"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
-				<li style="width:300px;left:10px;top:10px;"><input type="text" class="form-control" placeholder="Zoeken" id="search"></li>
-				<li style="top:10px;left:20px;"><button class="btn btn-primary" id="search_btn"><span class="glyphicon glyphicon-search" style='float:right;'></span></button></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Winkelmandje<span class="badge">0</span></a>
-					<div class="dropdown-menu" style="width:400px;">
-						<div class="panel panel-success">
-							<div class="panel-heading">
-								<div class="row"> 
-									<div class="col-md-3">Artikelnr.</div>
-									<div class="col-md-3">smartphone foto</div>
-									<div class="col-md-3">smartphone naam</div>
-									<div class="col-md-3">prijs in euro</div>
-								</div>
-							</div>
-							<div class="panel-body">
-								<div id="cart_product">
-								
-								</div>
-							</div>
-							<div class="panel-footer"></div>
-						</div>
-					</div>
-				</li>
-				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>Aanmelden</a>
-					<ul class="dropdown-menu">
-						<div style="width:300px;">
-							<div class="panel panel-primary">
-								<div class="panel-heading">Login</div>
-								<div class="panel-heading">
-									<form onsubmit="return false" id="login">
-										<label for="email">Email</label>
-										<input type="email" class="form-control" name="email" id="email" required/>
-										<label for="email">Wachtwoord</label>
-										<input type="password" class="form-control" name="password" id="password" required/>
-										<p><br/></p>
-										<a href="#" style="color:white; list-style:none;">Wachtwoord vergeten?</a><input type="submit" class="btn btn-success" style="float:right;">
-                                        <div><a href="customer_registration.php?register=1" style="color:white;">Registreren</a></div>
-									</form>
-								</div>
-								<div class="panel-footer" id="e_msg"></div>
-							</div>
-						</div>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</div>
+	<?php
+	include_once "indexMenu.php";
+	?>
         
 </div>	
 	<p><br/></p>
 	<p><br/></p>
 	<p><br/></p>
+	
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-1"></div>
@@ -106,7 +32,7 @@ if(isset($_SESSION["uid"])){
 					</div>
 				</div>
 				<div class="panel panel-info">
-					<div class="panel-heading">smartphones</div>
+					<div class="panel-heading hoofding-categorie">smartphones</div>
 					<div class="panel-body">
 						<div id="get_product">
 							

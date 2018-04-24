@@ -16,7 +16,7 @@
 	</head>
 <body>
 <div class="wait overlay">
-	<div class="loader"></div>
+	
 </div>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">	
@@ -65,29 +65,10 @@
 						<div id="cart_checkout"></div>
 						
 						</div> 
-					</div>
-					<div class="panel-footer"></div>
+					</div>	
 				</div>
 			</div>
 			<div class="col-md-2"></div>
-			
 		</div>
 </body>	
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
+</html>	

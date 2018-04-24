@@ -46,7 +46,7 @@ if (isset($_GET["st"])) {
 							<script src="js/bootstrap.min.js"></script>
 							<script src="main.js"></script>
 							<style>
-								table tr td {padding:10px;}
+								
 							</style>
 						</head>
 					<body>

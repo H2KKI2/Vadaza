@@ -10,12 +10,14 @@ if(!isset($_SESSION["uid"])){
 	<head>
 		<meta charset="UTF-8">
 		<title>Vadaza</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="Style.css">
 		<script src="js/jquery2.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="main.js"></script>
 		<style>
-			table tr td {padding:10px;}
+			
 		</style>
 	</head>
 <body>
@@ -57,10 +59,10 @@ if(!isset($_SESSION["uid"])){
 											</div>
 											<div class="col-md-6">
 												<table>
-													<tr><td>Smartphone naam</td><td><b><?php echo $row["product_title"]; ?></b> </td></tr>
-													<tr><td>Smartphone prijs</td><td><b><?php echo "€ ".$row["product_price"]; ?></b></td></tr>
-                                                    <tr><td>Aantal stuks</td>td><td><b><?php echo $row["qty"]; ?></b></td></tr>
-													<tr><td>Transactie Id</td><td><b><?php echo $row["trx_id"]; ?></b></td></tr>
+													<tr><td>Smartphone naam: </td><td><b><?php echo $row["product_title"]; ?></b> </td></tr>
+													<tr><td>Smartphone prijs: </td><td><b><?php echo "€ ".$row["product_price"]; ?></b></td></tr>
+                                                    <tr><td>Aantal stuks: </td><td><b><?php echo $row["qty"]; ?></b></td></tr>
+													<tr><td>Transactie Id: </td><td><b><?php echo $row["trx_id"]; ?></b></td></tr>
 												</table>
 											</div>
 										</div>

@@ -3,11 +3,19 @@ include "db.php";
 
 session_start();
 
-
-if(isset($_POST["email"]) && isset($_POST["password"])){
-	$email = mysqli_real_escape_string($con,$_POST["email"]);
-	$password = md5($_POST["password"]);
-	$sql = "SELECT * FROM user_info WHERE email = '$email' AND password = '$password'";
+$email = mysqli_real_escape_string($con,$_POST["email"]);
+	$password = ($_POST["password"]);
+	$sql = "SELECT * FROM user_info WHERE email = '$email'";
+	
+	$result = mysqli_query($con, $sql);
+	$row = mysqli_fetch_assoc($result);
+	$hash = $row['password'];
+	
+	
+		
+	
+if (password_verify($password, $hash)){
+	
 	$run_query = mysqli_query($con,$sql);
 	$count = mysqli_num_rows($run_query);
 	
@@ -46,11 +54,14 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
 			echo "login_success";
 			exit();
 		}else{
-			echo "<span style='color:red;'>Please register before login..!</span>";
+			echo "<span style='color:red;'>Invalid password or username!...</span>";
 			exit();
 		}
     
 	
-}
+}else{
+			echo "<span style='color:red;'>Invalid password or username!...</span>";
+			exit();
+		}
 
 ?>

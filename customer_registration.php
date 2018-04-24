@@ -14,10 +14,13 @@ if (isset($_GET["register"])) {
 		<script src="js/bootstrap.min.js"></script>
 		<script src="main.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css">
+		
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" /> 
+		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 	</head>
 <body>
-<div class="wait overlay">
-	<div class="loader"></div>
+
 </div>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">	
@@ -44,61 +47,67 @@ if (isset($_GET["register"])) {
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
-				<div class="panel panel-primary">
+				<div style="margin-left:25%; width:700px;"class="panel panel-primary">
 					<div class="panel-heading">Registratie</div>
 					<div class="panel-body">
 					
 					<form id="signup_form" onsubmit="return false">
-						<div class="row">
-							<div class="col-md-6">
-								<label for="f_name">Voornaam</label>
-								<input type="text" id="f_name" name="f_name" class="form-control">
+					
+					<div class="row">
+							<div style='margin-left:20px;'class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="f_name" name="f_name">
+								<label class="mdl-textfield__label" for="f_name">Voornaam</label>
 							</div>
-							<div class="col-md-6">
-								<label for="f_name">Achternaam</label>
-								<input type="text" id="l_name" name="l_name"class="form-control">
+							<div style='margin-left:50px;'class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="l_name" name="l_name">
+								<label class="mdl-textfield__label" for="f_name">Achternaam</label>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<label for="email">Email</label>
-								<input type="text" id="email" name="email"class="form-control">
+					</div>
+					<div class="row">
+							<div style='width:94%; margin-left:20px;'class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="email" id="email" name="email">
+								<label class="mdl-textfield__label" for="email">Email</label>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<label for="password">Wachtwoord</label>
-								<input type="password" id="password" name="password"class="form-control">
+					</div>	
+					<div class="row">
+							<div style='width:94%; margin-left:20px;'class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="password" id="password" name="password">
+								<label class="mdl-textfield__label" for="password">Wachtwoord</label>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<label for="repassword">Wachtwoord opnieuw</label>
-								<input type="password" id="repassword" name="repassword"class="form-control">
+					</div>	
+					
+					<div class="row">
+							<div style='width:94%; margin-left:20px;'class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="password" id="repassword" name="repassword">
+								<label class="mdl-textfield__label" for="repassword">Wachtwoord opnieuw</label>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<label for="mobile">Telefoonnummer</label>
-								<input type="text" id="mobile" name="mobile"class="form-control">
+					</div>
+						
+					<div  class="row">
+							<div style='width:94%; margin-left:20px;'class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="mobile" name="mobile">
+								<label class="mdl-textfield__label" for="mobile">Telefoonnummer</label>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<label for="address1">Adres 1</label>
-								<input type="text" id="address1" name="address1"class="form-control">
+					</div>	
+					
+					<div class="row">
+							<div style='margin-left:20px;'class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="address1" name="address1">
+								<label class="mdl-textfield__label" for="address1">Adres 1</label>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<label for="address2">Huisnummer</label>
-								<input type="text" id="address2" name="address2"class="form-control">
-							</div>
-						</div>
+							
+							
+							<div style='margin-left:50px;'class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="address2" name="address2">
+								<label class="mdl-textfield__label" for="address2">Huisnummer</label>
+							</div>						
+					</div>	
+					
+						
 						<p><br/></p>
 						<div class="row">
 							<div class="col-md-12">
-								<input style="width:100%;" value="Sign Up" type="submit" name="signup_button"class="btn btn-success btn-lg">
+								<input style="margin-top:-40px; width:100%;" value="Registreren" type="submit" name="signup_button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--green">
 							</div>
 						</div>
 						

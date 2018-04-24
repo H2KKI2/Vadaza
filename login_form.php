@@ -18,17 +18,11 @@ if (isset($_POST["login_user_with_product"])) {
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Khan Store</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/bootstrap.min.css"/>
-		<script src="js/jquery2.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="main.js"></script>
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<title>Vadaza</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">		<link rel="stylesheet" href="Style.css">		<script src="js/jquery2.js"></script>		<script src="js/bootstrap.min.js"></script>		<script src="main.js"></script>								<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" /> 		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 	</head>
 <body>
-<div class="wait overlay">
-	<div class="loader"></div>
+
 </div>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">	
@@ -60,10 +54,7 @@ if (isset($_POST["login_user_with_product"])) {
 					<div class="panel-body">
 					
 						<form onsubmit="return false" id="login">
-							<label for="email">Email</label>
-							<input type="email" class="form-control" name="email" id="email" required/>
-							<label for="email">Password</label>
-							<input type="password" class="form-control" name="password" id="password" required/>
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">								<label class="mdl-textfield__label" for="email">Email</label>								<input class="mdl-textfield__input" type="email" name="email" id="email">							</div>																	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">								<label class="mdl-textfield__label" for="email">Wachtwoord</label>								<input class="mdl-textfield__input" type="password" name="password" id="password">							</div>
 							<p><br/></p>
 							<a href="#" style="color:#333; list-style:none;">Wachtwoord vergeten</a><input type="submit" class="btn btn-success" style="float:right;" Value="Login">
 							

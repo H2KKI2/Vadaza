@@ -51,7 +51,7 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		";
 		exit();
 	}
-	if(strlen($password) < 9 ){
+	if(strlen($password) < 6 ){
 		echo "
 			<div class='alert alert-warning'>
 				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
@@ -60,7 +60,7 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		";
 		exit();
 	}
-	if(strlen($repassword) < 9 ){
+	if(strlen($repassword) < 6 ){
 		echo "
 			<div class='alert alert-warning'>
 				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
@@ -75,7 +75,7 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
 				<b>Wachtwoored is niet hetzelfde </b>
 			</div>
-		";
+		";				exit();
 	}
 	if(!preg_match($number,$mobile)){
 		echo "
@@ -108,7 +108,7 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		";
 		exit();
 	} else {
-		$password = md5($password);
+		$password = password_hash($password, PASSWORD_DEFAULT);
 		$sql = "INSERT INTO `user_info` 
 		(`user_id`, `first_name`, `last_name`, `email`, 
 		`password`, `mobile`, `address1`, `address2`) 
@@ -119,15 +119,14 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		$_SESSION["name"] = $f_name;
 		$ip_add = getenv("REMOTE_ADDR");
 		$sql = "UPDATE cart SET user_id = '$_SESSION[uid]' WHERE ip_add='$ip_add' AND user_id = -1";
-		if(mysqli_query($con,$sql)){
-			echo "register_success";
-			exit();
-		}
-	}
+			if(mysqli_query($con,$sql)){
+				exit();
+			}							}				
 	}
 	
-}
+	
 
+}
 
 
 ?>
