@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" /> 
 		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-		
+	
 	</head>
 	
 <body>
@@ -91,8 +91,10 @@
 										</div>
 										
 										<br>
-										<a href="#" style="color:blue; list-style:none;">Wachtwoord vergeten?</a><input type="submit" class="btn btn-success" style="float:right;">
-                                        <div><a href="customer_registration.php?register=1" style="color:blue;">Registreren</a></div>
+										<a href="#" style="color:blue; margin-left: 2%; list-style:none;">Wachtwoord vergeten?</a>
+										<input type="submit" class="btn btn-success" value="Aanmelden" style="float:right; margin-right: 2%;">
+                                        <div><a href="customer_registration.php?register=1" style="color:blue; margin-left: 2%;">Registreren</a></div>
+										
 									</form>
 									
 								</div>

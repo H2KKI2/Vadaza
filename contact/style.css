@@ -4,7 +4,7 @@
 }
 
 body {
-  background: linear-gradient(45deg, rgba(66, 244, 155, .3), rgba(110, 37, 132, .3) ),url("profile-background.jpg")center center no-repeat;
+  background: linear-gradient(45deg, rgba(33, 150, 243, .3), rgba(244, 67, 54, .3) ),url("profile-background.jpg")center center no-repeat;
   background-size: cover;
   overflow: hidden;
   font-family: "Open Sans Condensed", sans-serif; 
@@ -22,7 +22,7 @@ body {
   background-color: #ffffff;
   padding: 2%;
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 37%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -39,7 +39,7 @@ body {
   background-color: #ffffff;
   padding: 2%;
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 63%;
   transform: translate(-50%, -50%);
   text-align: center;

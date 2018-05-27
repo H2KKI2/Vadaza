@@ -15,7 +15,6 @@
 		<link rel="stylesheet" type="text/css" href="style.css"/>
 	</head>
 <body>
-<div class="wait overlay">
 	
 </div>
 	<div class="navbar navbar-inverse navbar-fixed-top">

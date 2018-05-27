@@ -1,12 +1,4 @@
-*, *::before, *::after{
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-*::before, *::after{
-  content: '';
-  position: absolute;
-}
+
 
 /*RAND VAN PAGINA */
 html, body {
@@ -28,11 +20,7 @@ ul {
 a {
   text-decoration: none;
 }
-.a-nav {
-  display: block;
-  height: 100%;
-  padding: 1.25em;
-}
+
 .list-menu-item > a{
   color: inherit;
 }
@@ -72,19 +60,7 @@ input[type=checkbox],input[type=radio] {
   border-radius: 30px;
   font-size: 0;
 }
-.navigation-label {
-  position: relative;
-  display: inline-block;
-  z-index: 3;
-  margin-left: -1.08em;
-  padding: 10px;
-  -moz-transition: color .1s step-end;
-  -webkit-transition: color .1s step-end;
-  transition: color .1s step-end;
-  -webkit-border-radius: inherit;
-  border-radius: inherit;
-  font-size: 16px;
-}
+
 
 /*BALK VANBOVEN */
 
@@ -151,9 +127,7 @@ input[type=radio]#third-navigation:checked ~ .checked-background {
 .variant-wrapper:last-child {
   margin-bottom: 0;
 }
-.variant-wrapper:not(:last-child) {
-  border-right: 2px solid #F1F1F1;
-}
+
 
 
 

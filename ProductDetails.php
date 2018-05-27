@@ -1,6 +1,12 @@
 <?php
+session_start();
+if(!isset($_SESSION["uid"])){
+	include_once 'indexMenu.php';
+}else{include_once 'profileMenu.php';}
 
 include "db.php";
+
+
 
 $proID = 0;
 $pro_brand= "null";
@@ -12,17 +18,19 @@ if(isset($_GET['id'])) {
     $proID = $_GET['id'];
 }
    
+	
 
-
-	$product_query = "SELECT * FROM products WHERE product_id= '$proID'";
+	$product_query = "SELECT * FROM products LEFT JOIN brands ON product_brand = brands.brand_id WHERE product_id = '$proID'";
 	$run_query = mysqli_query($con,$product_query);
 	if(mysqli_num_rows($run_query) > 0){
 		while($row = mysqli_fetch_array($run_query)){
 			$pro_id    = $row['product_id'];
 			$pro_cat   = $row['product_cat'];
-			$pro_brand = $row['product_brand'];
+			$pro_brand = $row['brand_title'];
 			$pro_title = $row['product_title'];
 			$pro_price = $row['product_price'];
+			setlocale(LC_MONETARY, 'nl_NL.UTF-8');
+			$pro_price = money_format('%!(#1i', $pro_price);
 			$pro_image = $row['product_image'];
             $pro_ram = $row['product_ram'];
             $pro_opslag = $row['product_opslag'];
@@ -48,59 +56,37 @@ if(isset($_GET['id'])) {
         }
     }
 
+	$rating_query = "SELECT * FROM rating WHERE product_id= '$proID'";
+	$run_query = mysqli_query($con,$rating_query);
+	if(mysqli_num_rows($run_query) > 0){
+		while($row = mysqli_fetch_array($run_query)){
+			$rating_id =$row['rating_id'];
+			$user_id =$row['user_id'];
+			$product_id =$row['product_id'];
+			$rating =$row['rating'];
+			$comment =$row['comment'];
+		}
+	}
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
-		<meta charset="UTF-8">
-		<title>Vadaza</title>		
-        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<script src="js/jquery2.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="main.js"></script>
-		<link type="text/css" href="css/import.css" rel="stylesheet" >
-        <link type="text/css" href="style.css">
-    </head>
+	<link type="text/css" href="css/import.css" rel="stylesheet">
+	
+</head>
 <body>
     
     
     
-    
-  <div class="wait overlay">
-	<div class="loader"></div>
-</div>
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">	
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
-					<span class="sr-only">navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a href="#" class="navbar-brand">Vadaza</a>
-                    </div>
-        </div>
-                </div>
-          
+ 
 	
-                
-                
-                
-                
-                
-    
 <div class=b-main>
   <div class=b-list>
-    <ul class=list-menu>
+    
      
-      <div class=navigation-for-large-sizes>
+      
         
-       <i class=checked-background></i>
-      </div>
-    </ul>
+     
   </div>
   <div class=b-variant>
    <figure class=variant-wrapper>
@@ -109,19 +95,20 @@ if(isset($_GET['id'])) {
        <span></span>
        <i class=description-variant-span></i>
      </p>
-     <img src='product_images/<?php echo($pro_image); ?>'>
+     <img style='margin-top: 30%;' src='product_images/<?php echo($pro_image); ?>'>
      <div>
        <p class=variant-price>
-         Prijs: <br><span><?php echo ($pro_price)?></span><br> incl. btw
+         Prijs: <br><span>€ <?php echo ($pro_price)?></span><br> incl. btw
        </p>
       </div>
        <ul class=variant-description-list>
-         <li><span>Artikelnummer:</span></li>
-         <li><span>Merk:<?php echo $pro_brand ?></span></li>
-         <li><span>Garantie: 2jaar</span></li>
-         <li><span>Garantietype</span></li>
+         <li><span>Artikelnummer: <?php echo $pro_id ?></span></li>
+         <li><span>Merk: <?php echo $pro_brand ?></span></li>
+         <li><span>Garantie: 2 jaar</span></li>
        </ul>
-      <button class=variant-price-calculate>in winkelmandje</button>
+	   
+      <button pid=<?php echo ($pro_id)?> style='height: 40px; width:70%; margin-top: 3px; font-size: 10px; margin-left: 15%;' id='product' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Winkelmandje</button>
+		
    </figure>
    <figure class=variant-wrapper>
      <p class=description-variant>
@@ -361,6 +348,8 @@ if(isset($_GET['id'])) {
       </table>
       </div>
     </div>
+	
+	
 
     </body>
 </html>

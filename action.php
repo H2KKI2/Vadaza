@@ -125,15 +125,14 @@ if(isset($_POST["getProduct"])){
 		while($row = mysqli_fetch_array($run_query)){
 
 			$pro_id    = $row['product_id'];
-
 			$pro_cat   = $row['product_cat'];
-
 			$pro_brand = $row['product_brand'];
-
 			$pro_title = $row['product_title'];
-
 			$pro_price = $row['product_price'];
-
+			
+			setlocale(LC_MONETARY, 'nl_NL.UTF-8');
+			$pro_price = money_format('%!(#1i', $pro_price);
+			
 			$pro_image = $row['product_image'];
 
 			echo "
@@ -150,7 +149,7 @@ if(isset($_POST["getProduct"])){
 
 								</div>
 
-								<div class='panel-heading' style='font-size: 20px;'>€$pro_price,00
+								<div class='panel-heading' style='font-size: 20px;'>€$pro_price
 								
 									<form action='ProductDetails.php' method='get'>
 									<button pid='$pro_id' style='height: 40px; margin-top: 3px; font-size: 10px;' id='product' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Winkelmandje</button>
@@ -197,9 +196,9 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 		
 	}else {
 
+	//searsh button
 		$keyword = $_POST["keyword"];
-
-		$sql = "SELECT * FROM products WHERE product_keywords LIKE '%$keyword%'";
+		$sql = "SELECT * FROM products WHERE product_keywords OR product_title LIKE '%$keyword%'";
 
 	}
 
@@ -213,42 +212,31 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 	while($row=mysqli_fetch_array($run_query)){
 
 			$pro_id    = $row['product_id'];
-
 			$pro_cat   = $row['product_cat'];
-
 			$pro_brand = $row['product_brand'];
-
 			$pro_title = $row['product_title'];
-
 			$pro_price = $row['product_price'];
-
+			setlocale(LC_MONETARY, 'nl_NL.UTF-8');
+			$pro_price = money_format('%!(#1i', $pro_price);
 			$pro_image = $row['product_image'];
 
 			echo "
 
 				<div class='col-md-4'>
-
 							<div class='panel panel-info'>
-
 								<div class='panel-heading'>$pro_title</div>
-
 								<div class='panel-body'>
-
 									<img src='product_images/$pro_image' class='center-block' style='width:160px; height:250px;'/>
-
 								</div>
-
-								<div style='font-size: 20px;' class='panel-heading'>€$pro_price,00
+								<div style='font-size: 20px;' class='panel-heading'>€$pro_price
 
 									<form action='ProductDetails.php' method='get'>
 									<button pid='$pro_id' style='height: 40px; margin-top: 3px; font-size: 10px;' id='product' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Winkelmandje</button>
 									<button style='height: 40px; float:right; margin-top: 3px; font-size: 10px;' name='id' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent' type='submit' value='$pro_id'>Details</button>
                                     </form>
-
+									
 								</div>
-
 							</div>
-
 						</div>	
 
 			";
@@ -265,117 +253,46 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 
 	if(isset($_POST["addToCart"])){
 
-		
-
-
-
 		$p_id = $_POST["proId"];
-
 		
-
-
-
 		if(isset($_SESSION["uid"])){
-
-
-
+			
 		$user_id = $_SESSION["uid"];
 
-
-
 		$sql = "SELECT * FROM cart WHERE p_id = '$p_id' AND user_id = '$user_id'";
-
 		$run_query = mysqli_query($con,$sql);
-
 		$count = mysqli_num_rows($run_query);
 
 		if($count > 0){
 
-			echo "
-
-				<div class='alert alert-warning'>
-
+			echo 
+				"<div class='alert alert-warning'>
 						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-
-						<b>Product is al toegevoegd aan het winkelmandje..!</b>
-
-				</div>
-
-			";//not in video
+						<b>Product is al toegevoegd aan het winkelmandje!</b>
+				</div>";
 
 		} else {
-
 			$sql = "INSERT INTO `cart`
-
 			(`p_id`, `ip_add`, `user_id`, `qty`) 
-
 			VALUES ('$p_id','$ip_add','$user_id','1')";
-
+			
 			if(mysqli_query($con,$sql)){
 
-				echo "
-
-					<div class='alert alert-success'>
-
+				echo 
+					"<div class='alert alert-success'>
 						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-
-						<b>Product is Toegevoegd aan het winkelmandje..!</b>
-
-					</div>
-
-				";
-
+						<b>Product is Toegevoegd aan het winkelmandje!</b>
+					</div>";
 			}
-
 		}
 
 		}else{
-
-			$sql = "SELECT id FROM cart WHERE ip_add = '$ip_add' AND p_id = '$p_id' AND user_id = -1";
-
-			$query = mysqli_query($con,$sql);
-
-			if (mysqli_num_rows($query) > 0) {
-
-				echo "
-
-					<div class='alert alert-warning'>
-
-							<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-
-							<b>Product is al toegevoegd aan het winkelmandje..!</b>
-
-					</div>";
-
-					exit();
-
-			}
-
-			$sql = "INSERT INTO `cart`
-
-			(`p_id`, `ip_add`, `user_id`, `qty`) 
-
-			VALUES ('$p_id','$ip_add','-1','1')";
-
-			if (mysqli_query($con,$sql)) {
-
-				echo "
-
-					<div class='alert alert-success'>
-
+			//When user is not logged in, cant add product to cart 
+			echo 
+					"<div class='alert alert-danger'>
 						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-
-						<b>Product is toegevoegd aan het winkelmandje..!</b>
-
-					</div>
-
-				";
-
-				exit();
-
-			}
-
-			
+						<b>Sorry maar u moet eerst inloggen voor u een product kan toevoegen aan het winkelmandje!</b>
+					</div>";
 
 		}
 
@@ -392,7 +309,6 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 
 
 //Count User cart item
-
 if (isset($_POST["count_item"])) {
 
 	//When user is logged in then we will count number of item in cart by using user session id
@@ -412,13 +328,11 @@ if (isset($_POST["count_item"])) {
 	
 
 	$query = mysqli_query($con,$sql);
-
 	$row = mysqli_fetch_array($query);
-
+	
 	echo $row["count_item"];
 
 	exit();
-
 }
 
 //Get Cart Item From Database to Dropdown menu
@@ -435,10 +349,6 @@ if (isset($_POST["Common"])) {
 
 	}else{
 
-		//When user is not logged in this query will execute
-
-		$sql = "SELECT a.product_id,a.product_title,a.product_price,a.product_image,b.id,b.qty FROM products a,cart b WHERE a.product_id=b.p_id AND b.ip_add='$ip_add' AND b.user_id < 0";
-
 	}
 
 	$query = mysqli_query($con,$sql);
@@ -446,7 +356,6 @@ if (isset($_POST["Common"])) {
 	if (isset($_POST["getCartItem"])) {
 
 		//display cart item in dropdown menu
-
 		if (mysqli_num_rows($query) > 0) {
 
 			$n=0;
@@ -456,13 +365,11 @@ if (isset($_POST["Common"])) {
 				$n++;
 
 				$product_id = $row["product_id"];
-
 				$product_title = $row["product_title"];
-
 				$product_price = $row["product_price"];
-
+				setlocale(LC_MONETARY, 'nl_NL.UTF-8');
+				$product_price = money_format('%!(#1i', $product_price);
 				$product_image = $row["product_image"];
-
 				$cart_item_id = $row["id"];
 
 				$qty = $row["qty"];
@@ -477,7 +384,7 @@ if (isset($_POST["Common"])) {
 
 						<div class="col-md-3">'.$product_title.'</div>
 
-						<div class="col-md-3">'.$product_price.'</div>
+						<div class="col-md-3">€'.$product_price.'</div>
 
 					</div>';
 
@@ -508,15 +415,11 @@ if (isset($_POST["Common"])) {
 					$n++;
 
 					$product_id = $row["product_id"];
-
 					$product_title = $row["product_title"];
-
 					$product_price = $row["product_price"];
-
 					$product_image = $row["product_image"];
-
 					$cart_item_id = $row["id"];
-
+					
 					$qty = $row["qty"];
 
 
@@ -541,7 +444,7 @@ if (isset($_POST["Common"])) {
 
 								<input type="hidden" name="" value="'.$cart_item_id.'"/>
 
-								<div class="col-md-2"><img class="img-responsive" src="product_images/'.$product_image.'"></div>
+								<div class="col-md-2"><img style="height: 150px; margin-bottom: 15%; " class="img-responsive" src="product_images/'.$product_image.'"></div>
 
 								<div class="col-md-2">'.$product_title.'</div>
 

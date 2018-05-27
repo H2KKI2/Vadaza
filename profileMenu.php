@@ -1,12 +1,4 @@
-<?php
 
-session_start();
-if(!isset($_SESSION["uid"])){
-	header("location:index.php");
-}
-
-include_once 'db.php';
-?>
 <!DOCTYPE html>
 <html>
 
@@ -16,7 +8,7 @@ include_once 'db.php';
 		<title>Vadaza</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="Style.css">
 		<script src="js/jquery2.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="main.js"></script>
@@ -56,27 +48,18 @@ include_once 'db.php';
 			</div>
 
 		<div class="collapse navbar-collapse" id="collapse">
-
 			<ul class="nav navbar-nav">
-
 				<li><a href="index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-
 				<li><a href="index.php"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
-
 				<li style="width:300px;left:10px;top:10px;"><input type="text" class="form-control" placeholder="Zoeken" id="search"></li>
-
 				<li style="top:10px;left:20px;"><button class="btn btn-primary" id="search_btn">Zoeken</button></li>
-
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-
+			<li><a href="contact/contact.php"><span class="glyphicon glyphicon-modal-window"></span>Over Ons / support</a></li>
 				<li><a href="#" id="cart_container" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Winkelmandje <span class="badge">0</span></a>
-
 					<div class="dropdown-menu" style="width:400px;">
-
 						<div class="panel panel-success">
-						
 							<div class="panel-heading">
 								<div class="row"> 
 									<div class="col-md-3">Artikelnr.</div>

@@ -32,14 +32,14 @@ if(isset($_SESSION["uid"])){
 					</div>
 				</div>
 				<div class="panel panel-info">
-					<div class="panel-heading hoofding-categorie">smartphones</div>
+					<div class="panel-heading hoofding-categorie" > smartphones </div>
 					<div class="panel-body">
 						<div id="get_product">
 							
 						</div>
 						
 					</div>
-					<div class="panel-footer">&copy; 2018</div>
+					<div class="panel-footer">&copy; Yanu Szapinszky & Mathias Prinsen - 2018</div>
 				</div>
 			</div>
 			<div class="col-md-1"></div>

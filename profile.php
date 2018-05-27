@@ -1,4 +1,14 @@
 <?php
+
+session_start();
+if(!isset($_SESSION["uid"])){
+	header("location:index.php");
+}
+
+include_once 'db.php';
+?>
+
+<?php
 include_once 'profileMenu.php';
 ?>
 

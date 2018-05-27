@@ -26,7 +26,26 @@
 	
 </head>
 
-<body>
+</div>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">	
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
+					<span class="sr-only">navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#" class="navbar-brand">Vadaza</a>
+			</div>
+		<div class="collapse navbar-collapse" id="collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="/profile.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+				<li><a href="/profile.php"><span class="glyphicon glyphicon-modal-window"></span>Smartphones</a></li>
+			</ul>
+		</div>
+	</div>
+	</div>
   <div class="wrapper">
       <div class="card">
 
@@ -78,7 +97,7 @@
           </a>
           
           <!-- GITHUB ICON -->
-          <a class="icon-github" href="#" target="_blank">
+          <a class="icon-github" href="https://github.com/Mathpsn" target="_blank">
             <i class="fa fa-2x fa-github"></i>
           </a>
           
