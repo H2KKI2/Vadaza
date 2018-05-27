@@ -1,0 +1,344 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  background: linear-gradient(45deg, rgba(33, 150, 243, .3), rgba(244, 67, 54, .3) ),url("profile-background.jpg")center center no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  font-family: "Open Sans Condensed", sans-serif; 
+}
+
+.wrapper {
+  height: 60vh;
+  position: relative;
+}
+
+.card {
+  width: 15%;
+  height: 80%;
+  opacity: .98;
+  background-color: #ffffff;
+  padding: 2%;
+  position: absolute;
+  top: 55%;
+  left: 37%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 7px;
+  overflow: hidden;
+  color: #313f47;
+  box-shadow: 3px 3px 10px #313f47;
+}
+
+.card2 {
+  width: 15%;
+  height: 80%;
+  opacity: .98;
+  background-color: #ffffff;
+  padding: 2%;
+  position: absolute;
+  top: 55%;
+  left: 63%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 7px;
+  overflow: hidden;
+  color: #313f47;
+  box-shadow: 3px 3px 10px #313f47;
+}
+
+/* FORM */
+.contact-form  {	
+	width: 39%;
+	height: 55%;
+	opacity: .98;
+	background-color: #ffffff;
+	margin-top: 3%;
+	padding: 35px;
+	position: absolute;
+	top: 116%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 7px;
+	overflow: hidden;
+	color: #313f47;
+	box-shadow: 3px 3px 10px #313f47;
+}
+
+.contact-name {
+	margin-right:0% !important;
+	text-align: left;
+	width: 45% !important;
+}
+
+.contact-email {
+	width: 50% !important;
+	margin-left: 5% !important;
+}
+
+.contact-message {
+	width: 100% !important;
+}
+.contact-message-box{
+	height: 45%!important;
+}
+
+.btn-versturen{
+	margin-left: 82% !important;
+}
+
+.container{
+	width: 100% !important;
+}
+/* HEADER */
+.avatar {
+  position: relative;
+  height: 40%;
+  top: 0%;
+  width: 85% !important;
+  margin-left:8% !important;
+  margin-right:0% !important;
+}
+
+.avatar .lines {
+  border: solid #cccccc 1px;
+  height: 5%;
+  width: 1000px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -100;
+}
+
+.avatar img {
+  border-radius: 50%;
+  height: 100%;
+  width: 100% !important;
+}
+
+.avatar img:hover {
+  opacity: .9;
+  transition: ease 1.5s;
+}
+
+
+/* NAME AND TITLE */
+h1 {
+  margin-top: 2% !important;
+  font-size: 40px !important;
+  letter-spacing: .03em !important;
+  font-family: "Open Sans Condensed", sans-serif !important;
+}
+
+h2 {
+  margin-bottom: 20% !important;
+  font-size: 20px !important;
+  line-height: 100% !important;
+  font-family: "Open Sans Condensed", sans-serif !important;
+}
+
+
+/* SOCIAL ICONS */
+.social a {
+  text-decoration: none;
+  color: #cccccc;
+  margin: 0px 5px;
+}
+
+/* Facebook */
+a.icon-facebook:hover{
+	color: #3b5998 ; 
+  transition: ease 1.5s;
+}
+
+/* Github */
+a.icon-github:hover{
+	color: #6e2584; 
+  transition: ease 1.5s;
+}
+
+/* Twitter */
+a.icon-twitter:hover{
+	color: #1dcaff; 
+  transition: ease 1.5s;
+}
+
+
+
+/* FOOTER */
+.footer {
+  top: 97%;
+  left: 50%;
+  width: 255px;
+  height: 20px;
+  text-align: center;
+  transform: translate(-125px, -35px);
+  position: absolute;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.footer p {
+  font-size: 16px !important;
+}
+
+
+/* ---------------------------------------- */
+/* -------------RESPONSIVENESS------------- */
+/* ---------------------------------------- */
+
+/* on mobile */
+@media(max-width: 800px){
+  .card {
+  width: 45%;
+  height: 85%;
+  padding: 35px;
+  top: 50%;
+  left: 25%;
+}
+
+.card2 {
+  width: 45%;
+  height: 85%;
+  padding: 35px;
+  top: 50%;
+  left: 75%;
+}
+
+/* FORM */
+.contact-form  {	
+	width:90%;
+	height: 55%;
+	opacity: .98;
+	background-color: #ffffff;
+	margin-top: 50px;
+	padding: 35px;
+	position: absolute;
+	top: 116%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 7px;
+	overflow: hidden;
+	color: #313f47;
+	box-shadow: 3px 3px 10px #313f47;
+}
+
+.contact-name {
+	margin-right:0% !important;
+	text-align: left;
+	width: 45% !important;
+	margin-left: 2% !important;
+}
+
+.contact-email {
+	width: 45% !important;
+	margin-left: 5% !important;	
+}
+
+.contact-message {
+	margin-left: 2% !important;
+	width:95% !important;
+}
+.contact-message-box{
+	height: 45%!important;
+	margin-top:-1% !important;
+}
+
+
+.btn-versturen{
+	margin-left: 82% !important;
+	margin-bottom: 1% !important;
+}
+
+.contact-form{
+	padding-top: 2% !important;
+}
+
+/* -------------------------------------- */
+/* ------screen width 400px or less------ */
+/* -------------------------------------- */
+@media(max-width: 400px){
+	  .card {
+  width: 45%;
+  height: 85%;
+  padding: 35px;
+  top: 50%;
+  left: 25%;
+}
+
+.card2 {
+  width: 45%;
+  height: 85%;
+  padding: 35px;
+  top: 50%;
+  left: 75%;
+}
+
+.contact-name {
+	margin-right:0% !important;
+	text-align: left;
+	width: 45% !important;
+	margin-left: 2% !important;
+	position: absolute !important;
+}
+
+.contact-email {
+	width: 45% !important;
+	left: 47% !important;
+	position: absolute !important;
+	
+	
+}
+
+.contact-message {
+	width: 95% !important;
+	margin-left: 2% !important;
+	
+	position: absolute !important;
+	top:30%!important;;
+	
+}
+
+.btn-versturen{
+	margin-left: 50% !important;
+	margin-bottom: 1% !important;
+	position: absolute !important;
+	top: 75% !important;
+}
+
+.contact-form{
+	padding-top: 2% !important;
+	padding-left:0% !important;
+}
+
+.login-wrapper{
+	height:100%;
+}
+
+/* NAME AND TITLE */
+h1 {
+  font-size: 25px !important; 
+  margin:0px !important;
+  line-height: 100%!important;
+}
+h2 {
+  font-size: 15px !important;
+  margin-top:10% !important;
+}
+
+/* FOOTER */
+.footer {
+  top: 102%;
+}
+.footer p {
+  font-size: 10px !important;
+}
+
+
+
+}
+
+
