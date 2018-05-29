@@ -13,7 +13,7 @@ if (isset($_GET["register"])) {
 		<script src="js/jquery2.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="main.js"></script>
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
 		
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" /> 
@@ -93,7 +93,7 @@ if (isset($_GET["register"])) {
 					<div class="row">
 							<div style='margin-left:20px;'class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 								<input class="mdl-textfield__input" type="text" id="address1" name="address1">
-								<label class="mdl-textfield__label" for="address1">Adres 1</label>
+								<label class="mdl-textfield__label" for="address1">Adres</label>
 							</div>
 							
 							
