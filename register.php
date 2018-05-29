@@ -19,7 +19,7 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		
 		echo "
 			<div class='alert alert-warning'>
-				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><b>Vull alle vakjes in..!</b>
+				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><b>Vull alle vakjes in!</b>
 			</div>
 		";
 		exit();
@@ -28,7 +28,7 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		echo "
 			<div class='alert alert-warning'>
 				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>Deze $f_name is niet geldig..!</b>
+				<b>Deze $f_name is niet geldig!</b>
 			</div>
 		";
 		exit();
@@ -37,7 +37,7 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		echo "
 			<div class='alert alert-warning'>
 				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>Deze $l_name is niet geldig..!</b>
+				<b>Deze $l_name is niet geldig!</b>
 			</div>
 		";
 		exit();
@@ -46,7 +46,7 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		echo "
 			<div class='alert alert-warning'>
 				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>Deze $email is niet geldig..!</b>
+				<b>Deze $email is niet geldig!</b>
 			</div>
 		";
 		exit();
@@ -55,7 +55,7 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		echo "
 			<div class='alert alert-warning'>
 				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>Wachtwoord is te zwak</b>
+				<b>Wachtwoord is te zwak!</b>
 			</div>
 		";
 		exit();
@@ -64,7 +64,7 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		echo "
 			<div class='alert alert-warning'>
 				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>Wachtwoord is te zwak</b>
+				<b>Wachtwoord is te zwak!</b>
 			</div>
 		";
 		exit();
@@ -73,7 +73,7 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		echo "
 			<div class='alert alert-warning'>
 				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>Wachtwoored is niet hetzelfde </b>
+				<b>Wachtwoored is niet hetzelfde!</b>
 			</div>
 		";				exit();
 	}
@@ -81,7 +81,7 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		echo "
 			<div class='alert alert-warning'>
 				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>U nummer $mobile is niet geldig</b>
+				<b>U nummer $mobile is niet geldig!</b>
 			</div>
 		";
 		exit();
@@ -90,7 +90,7 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		echo "
 			<div class='alert alert-warning'>
 				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>Uw telefoonnummer is niet geldig...!</b>
+				<b>Uw telefoonnummer is niet geldig!</b>
 			</div>
 		";
 		exit();
@@ -103,7 +103,7 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 		echo "
 			<div class='alert alert-danger'>
 				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>Deze email wordt al reeds gebruikt.. kies een andere email.</b>
+				<b>Deze email wordt al reeds gebruikt. Kies een andere email!</b>
 			</div>
 		";
 		exit();
