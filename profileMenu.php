@@ -1,147 +1,111 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
 
-<!DOCTYPE html>
-<html>
+    <div class="container-fluid">	
 
-<head>
+        <div class="navbar-header">
 
-		<meta charset="UTF-8">
-		<title>Vadaza</title>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="Style.css">
-		<script src="js/jquery2.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="main.js"></script>
-		<link rel="stylesheet" href="Style.css">		
-		
+                <span class="sr-only"> navigation toggle</span>
 
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" /> 
-		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+                <span class="icon-bar"></span>
 
-		
+                <span class="icon-bar"></span>
 
-	</head>
+                <span class="icon-bar"></span>
 
-<body>
+            </button>
 
-	<div class="navbar navbar-inverse navbar-fixed-top">
+            <a href="#" class="navbar-brand">Vadaza</a>
 
-		<div class="container-fluid">	
+        </div>
 
-			<div class="navbar-header">
+        <div class="collapse navbar-collapse" id="collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+                <li><a href="index.php"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
+                <li style="width:300px;left:10px;top:10px;"><input type="text" class="form-control" placeholder="Zoeken" id="search"></li>
+                <li style="top:10px;left:20px;"><button class="btn btn-primary" id="search_btn">Zoeken</button></li>
+            </ul>
 
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="contact/contact.php"><span class="glyphicon glyphicon-modal-window"></span>Over Ons / support</a></li>
+                <li><a href="#" id="cart_container" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Winkelmandje <span class="badge">0</span></a>
+                    <div class="dropdown-menu" style="width:400px;">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <div class="row"> 
+                                    <div class="col-md-3">Artikelnr.</div>
+                                    <div class="col-md-3">smartphone foto</div>
+                                    <div class="col-md-3">smartphone naam</div>
+                                    <div class="col-md-3">prijs in euro</div>
+                                </div>		
+                            </div>
 
-					<span class="sr-only"> navigation toggle</span>
+                            <div class="panel-body">
 
-					<span class="icon-bar"></span>
+                                <div style="overflow-x: hidden" class="pre-scrollable">
+                                    <div id="cart_product">
 
-					<span class="icon-bar"></span>
+                                    </div>
+                                </div>
 
-					<span class="icon-bar"></span>
+                            </div>
 
-				</button>
+                        </div>
 
-				<a href="#" class="navbar-brand">Vadaza</a>
+                        <a href="cart.php" class="btn btn-warning btn-bewerken">Bewerken&nbsp;&nbsp;<span class="glyphicon glyphicon-edit"></span></a>
+                    </div>
 
-			</div>
+                </li>
 
-		<div class="collapse navbar-collapse" id="collapse">
-			<ul class="nav navbar-nav">
-				<li><a href="index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-				<li><a href="index.php"><span class="glyphicon glyphicon-modal-window"></span>Product</a></li>
-				<li style="width:300px;left:10px;top:10px;"><input type="text" class="form-control" placeholder="Zoeken" id="search"></li>
-				<li style="top:10px;left:20px;"><button class="btn btn-primary" id="search_btn">Zoeken</button></li>
-			</ul>
+                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><?php echo "Hoi, ".$_SESSION["name"]; ?><span class="caret"></span></a>
 
-			<ul class="nav navbar-nav navbar-right">
-			<li><a href="contact/contact.php"><span class="glyphicon glyphicon-modal-window"></span>Over Ons / support</a></li>
-				<li><a href="#" id="cart_container" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Winkelmandje <span class="badge">0</span></a>
-					<div class="dropdown-menu" style="width:400px;">
-						<div class="panel panel-success">
-							<div class="panel-heading">
-								<div class="row"> 
-									<div class="col-md-3">Artikelnr.</div>
-									<div class="col-md-3">smartphone foto</div>
-									<div class="col-md-3">smartphone naam</div>
-									<div class="col-md-3">prijs in euro</div>
-								</div>		
-							</div>
-							
-							<div class="panel-body">
-							
-							<div style="overflow-x: hidden" class="pre-scrollable">
-								<div id="cart_product">
-								
-								</div>
-								</div>
-								
-							</div>
-							
-						</div>
-						
-						<a href="cart.php" class="btn btn-warning btn-bewerken">Bewerken&nbsp;&nbsp;<span class="glyphicon glyphicon-edit"></span></a>
-					</div>
-
-				</li>
-
-				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span><?php echo "Hoi, ".$_SESSION["name"]; ?><span class="caret"></span></a>
-
-					<ul class="dropdown-menu">
+                    <ul class="dropdown-menu">
 
                         <li><a href="cart.php" style="text-decoration:none; color:blue;"><span class="glyphicon glyphicon-shopping-cart"></span>Winkelmandje</a></li>
 
-						<li class="divider"></li>
+                        <li class="divider"></li>
 
-						<li><a href="customer_order.php" style="text-decoration:none; color:blue;">Orders</a></li>
+                        <li><a href="customer_order.php" style="text-decoration:none; color:blue;">Orders</a></li>
 
-						<li class="divider"></li>
+                        <li class="divider"></li>
 
-						<li><a href="" style="text-decoration:none; color:blue;">Wachtwoord veranderen</a></li>
+                        <li><a href="" style="text-decoration:none; color:blue;">Wachtwoord veranderen</a></li>
 
-						
 
-						<?php
 
-						$uid = $_SESSION['uid'];
+                        <?php
 
-						$checkAdmin="SELECT * FROM user_info WHERE user_id=$uid;";
+                        $uid = $_SESSION['uid'];
 
-						$result = mysqli_query($con, $checkAdmin);
+                        $checkAdmin="SELECT * FROM user_info WHERE user_id=$uid;";
 
-						$row = mysqli_fetch_assoc($result);
+                        $result = mysqli_query($con, $checkAdmin);
 
-						
+                        $row = mysqli_fetch_assoc($result);
 
-						if($row['Admin'] ){
 
-						echo '<li class="divider"></li>';
 
-						echo '<li><a href="ProductToevoegen.php" style="text-decoration:none; color:blue;">Product toevoegen</a></li>';
+                        if($row['Admin'] ){
 
-						}
+                            echo '<li class="divider"></li>';
 
-						?>
+                            echo '<li><a href="ProductToevoegen.php" style="text-decoration:none; color:blue;">Product toevoegen</a></li>';
 
-						
+                        }
 
-						<li class="divider"></li>
+                        ?>
 
-						<li><a href="logout.php" style="text-decoration:none; color:blue;">Uitloggen</a></li>
 
-						
 
-					</ul>
+                        <li class="divider"></li>
 
-				</li>
+                        <li><a href="logout.php" style="text-decoration:none; color:blue;">Uitloggen</a></li>
 
-				
-
-			</ul>
-
-		</div>
-
-	</div>
-
-	</div>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
