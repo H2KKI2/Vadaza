@@ -128,12 +128,15 @@ if(isset($_POST["getProduct"])){
 			$pro_cat   = $row['product_cat'];
 			$pro_brand = $row['product_brand'];
 			$pro_title = $row['product_title'];
+			$pro_opslag = $row['product_opslag'];
+			$pro_color = $row['product_color'];
 			$pro_price = $row['product_price'];
 			
 			setlocale(LC_MONETARY, 'nl_NL.UTF-8');
 			$pro_price = money_format('%!(#1i', $pro_price);
 			
 			$pro_image = $row['product_image'];
+			
 
 			echo "
 
@@ -141,11 +144,11 @@ if(isset($_POST["getProduct"])){
 
 							<div class='panel panel-info'>
 
-								<div class='panel-heading'>$pro_title</div>
+								<div class='panel-heading'>$pro_title - $pro_opslag - $pro_color</div> 
 
 								<div class='panel-body'>
 
-									<img class='center-block' src='product_images/$pro_image' style='width:160px; height:250px;'/>
+									<img class='center-block' src='product_images/$pro_image' style='width:250px; height:250px;'/>
 
 								</div>
 
