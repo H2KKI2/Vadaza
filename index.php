@@ -3,6 +3,8 @@ session_start();
 if(isset($_SESSION["uid"])){
 	header("location:profile.php");
 }
+
+
 ?>
 <html>
 <head>      
@@ -33,6 +35,8 @@ if(isset($_SESSION["uid"])){
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-2 col-xs-12">
+			
+			
 				<div id="get_category">
 				</div>
 				
@@ -46,7 +50,7 @@ if(isset($_SESSION["uid"])){
 					</div>
 				</div>
 				<div class="panel panel-info">
-					<div class="panel-heading hoofding-categorie" > smartphones </div>
+					<div class="panel-heading cat_name" id="cat_name">smartphones</div>
 					<div class="panel-body">
 						<div id="get_product">
 							

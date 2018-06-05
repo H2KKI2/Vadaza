@@ -1,16 +1,13 @@
 
-<?php
-	include_once "indexMenu.php";
-?>
 
 <html>
   <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="A brief description of the website."/>
   
   <!-- TITLE -->
-	<title>contact</title>
+	<title>Contact</title>
 	
   <!-- LINKS -->
 	<link rel="stylesheet" href="style.css">
@@ -26,7 +23,7 @@
 	
 </head>
 
-</div>
+<body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">	
 			<div class="navbar-header">
@@ -56,7 +53,7 @@
         </div>
         
         <h1 id="card-name">Yanu Szapinszky</h1>
-        <h2>Programmeur / webdesigner</h2>
+        <h2>Programmeur / webdesigner / Pool</h2>
         <div class="social">
           
           <!-- FACEBOOK ICON -->
@@ -88,7 +85,7 @@
         </div>
         
         <h1>Mathias Prinsen</h1>
-        <h2>Programmeur / webdesigner</h2>
+        <h2>webdesigner</h2>
         <div class="social">
           
           <!-- LINKEDIN ICON -->
@@ -145,16 +142,11 @@
 
     <!-- FOOTER -->
     <div class="footer">
-      <p> &#169; 2018 | Yanu Szapinszky & Mathias Prinsen</p>
+      <p> &#169; 2018 | Yanu Szapinszky & Maxim Janssens</p>
     </div>
   
-
 </body>
 
 </html>
   
-  
-
-</body>
-
-</html>
+ 

@@ -1,7 +1,4 @@
-<?php
 
-
-?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,30 +12,18 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	</head>
 <body>
+
+	<?php if(isset($_SESSION["uid"])){
+    
+	include_once 'profileMenu.php';
+	}
+	else{
+	include_once 'indexMenu.php';
+	} 
+	?>
 	
 </div>
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">	
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
-					<span class="sr-only">navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a href="#" class="navbar-brand">Vadaza</a>
-			</div>
-		<div class="collapse navbar-collapse" id="collapse">
-			<ul class="nav navbar-nav">
-				<li><a href="index.php"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-				<li><a href="index.php"><span class="glyphicon glyphicon-modal-window"></span>Smartphones</a></li>
-			</ul>
-		</div>
-	</div>
-	</div>
-	<p><br/></p>
-	<p><br/></p>
-	<p><br/></p>
+	
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-2"></div>

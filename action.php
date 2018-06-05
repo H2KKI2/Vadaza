@@ -1,10 +1,9 @@
 <?php
 
 session_start();
-
 $ip_add = getenv("REMOTE_ADDR");
-
 include "db.php";
+
 
 if(isset($_POST["category"])){
 
@@ -25,8 +24,8 @@ if(isset($_POST["category"])){
 		while($row = mysqli_fetch_array($run_query)){
 
 			$cid = $row["cat_id"];
-
 			$cat_name = $row["cat_title"];
+			$cat_table = $row["cat_table"];
 
 			echo "
 
@@ -41,6 +40,9 @@ if(isset($_POST["category"])){
 	}
 
 }
+
+
+
 
 if(isset($_POST["brand"])){
 
@@ -115,6 +117,7 @@ if(isset($_POST["getProduct"])){
 		$start = 0;
 
 	}
+	
 
 	$product_query = "SELECT * FROM products LIMIT $start,$limit";
 
@@ -130,11 +133,9 @@ if(isset($_POST["getProduct"])){
 			$pro_title = $row['product_title'];
 			$pro_opslag = $row['product_opslag'];
 			$pro_color = $row['product_color'];
-			$pro_price = $row['product_price'];
-			
+			$pro_price = $row['product_price'];		
 			setlocale(LC_MONETARY, 'nl_NL.UTF-8');
 			$pro_price = money_format('%!(#1i', $pro_price);
-			
 			$pro_image = $row['product_image'];
 			
 
@@ -144,11 +145,11 @@ if(isset($_POST["getProduct"])){
 
 							<div class='panel panel-info'>
 
-								<div class='panel-heading'>$pro_title - $pro_opslag - $pro_color</div> 
+								<div class='panel-heading'>$pro_title $pro_opslag $pro_color</div> 
 
 								<div class='panel-body'>
 
-									<img class='center-block' src='product_images/$pro_image' style='width:250px; height:250px;'/>
+									<img class='center-block' src='product_images/$pro_image' style='width:75%; height:auto;'/>
 
 								</div>
 
@@ -156,6 +157,7 @@ if(isset($_POST["getProduct"])){
 								
 									<form action='ProductDetails.php' method='get'>
 									<button pid='$pro_id' style='height: 40px; margin-top: 3px; font-size: 10px;' id='product' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Winkelmandje</button>
+									<input hidden='true' name='category' value='2'>
 									<button style='height: 40px; float:right; margin-top: 3px; font-size: 10px;' name='id' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent' type='submit' value='$pro_id'>Details</button>
                                     </form>
 
@@ -185,10 +187,15 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 	
 	}elseif(isset($_POST["get_seleted_Category"])){
 
-		$id = $_POST["cat_id"];
-
-		$sql = "SELECT * FROM products WHERE product_cat = '$id'";
-
+		$id = $_POST["cat_id"]; 
+		$category_query = "select * from categories where cat_id = $id;";
+		$result = mysqli_query($conn, $category_query);
+		$row = mysqli_fetch_assoc($result);
+		$category = $row['cat_table'];
+		$sql = "SELECT * FROM $category";
+		
+		
+		
 	}elseif(isset($_POST["selectBrand"])){
 
 		$id = $_POST["brand_id"];
@@ -199,9 +206,10 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 		
 	}else {
 
-	//searsh button
+	//search button
+	//BROKEN
 		$keyword = $_POST["keyword"];
-		$sql = "SELECT * FROM products WHERE product_keywords OR product_title LIKE '%$keyword%'";
+        $sql = "SELECT * FROM products WHERE (product_title LIKE '%$keyword%') OR (product_keywords LIKE '%$keyword%')";
 
 	}
 
@@ -218,23 +226,27 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 			$pro_cat   = $row['product_cat'];
 			$pro_brand = $row['product_brand'];
 			$pro_title = $row['product_title'];
+			$pro_opslag = $row['product_opslag'];
+			$pro_color = $row['product_color'];
 			$pro_price = $row['product_price'];
 			setlocale(LC_MONETARY, 'nl_NL.UTF-8');
 			$pro_price = money_format('%!(#1i', $pro_price);
 			$pro_image = $row['product_image'];
+			$cid = $_POST['cat_id'];
 
 			echo "
 
 				<div class='col-md-4'>
 							<div class='panel panel-info'>
-								<div class='panel-heading'>$pro_title</div>
+								<div class='panel-heading'>$pro_title $pro_opslag $pro_color</div>
 								<div class='panel-body'>
-									<img src='product_images/$pro_image' class='center-block' style='width:160px; height:250px;'/>
+									<img src='product_images/$pro_image' class='center-block' style='width:75%; height:auto;'/>
 								</div>
 								<div style='font-size: 20px;' class='panel-heading'>€$pro_price
 
 									<form action='ProductDetails.php' method='get'>
-									<button pid='$pro_id' style='height: 40px; margin-top: 3px; font-size: 10px;' id='product' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Winkelmandje</button>
+									<button pid='$pro_id' pcat='$pro_cat' style='height: 40px; margin-top: 3px; font-size: 10px;' id='product' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Winkelmandje</button>
+									<input hidden='true' name='category' value='$cid'>
 									<button style='height: 40px; float:right; margin-top: 3px; font-size: 10px;' name='id' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent' type='submit' value='$pro_id'>Details</button>
                                     </form>
 									
@@ -257,6 +269,8 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 	if(isset($_POST["addToCart"])){
 
 		$p_id = $_POST["proId"];
+		$c_id = $_POST["proCat"];
+		
 		
 		if(isset($_SESSION["uid"])){
 			
@@ -276,15 +290,15 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 
 		} else {
 			$sql = "INSERT INTO `cart`
-			(`p_id`, `ip_add`, `user_id`, `qty`) 
-			VALUES ('$p_id','$ip_add','$user_id','1')";
+			(`p_id`,`c_id`, `ip_add`, `user_id`, `qty`) 
+			VALUES ('$p_id','$c_id','$ip_add','$user_id','1')";
 			
 			if(mysqli_query($con,$sql)){
 
 				echo 
 					"<div class='alert alert-success'>
 						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-						<b>Product is Toegevoegd aan het winkelmandje!</b>
+						<b>Product is toegevoegd aan het winkelmandje!</b>
 					</div>";
 			}
 		}
@@ -292,21 +306,13 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 		}else{
 			//When user is not logged in, cant add product to cart 
 			echo 
-					"<div class='alert alert-danger'>
+					
+						"<div class='alert alert-danger'>
 						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
 						<b>Sorry maar u moet eerst inloggen voor u een product kan toevoegen aan het winkelmandje!</b>
-					</div>";
+					</div>";		
 
 		}
-
-		
-
-		
-
-		
-
-		
-
 	}
 
 
@@ -342,18 +348,100 @@ if (isset($_POST["count_item"])) {
 
 if (isset($_POST["Common"])) {
 
-
-
 	if (isset($_SESSION["uid"])) {
 
-		//When user is logged in this query will execute
+		$cart_category_query = "select * from cart where user_id = '$_SESSION[uid]'";
+		$result = mysqli_query($conn, $cart_category_query);
+		$arrayCats = array();
+		$arrayId = array();
 
-		$sql = "SELECT a.product_id,a.product_title,a.product_price,a.product_image,b.id,b.qty FROM products a,cart b WHERE a.product_id=b.p_id AND b.user_id='$_SESSION[uid]'";
+		$intTeller = 0;
+		
+		while($row = mysqli_fetch_array($result)){
+			$id = $row['c_id'];
+			$pid = $row['p_id'];
+		
+			$category_query = "select * from categories where cat_id = $id";
+			$resultCat = mysqli_query($conn, $category_query);
+			$rowCat = mysqli_fetch_assoc($resultCat);
+			$category_table = $rowCat['cat_table'];
 
+			$arrayCats[$intTeller] = $category_table;
+			$arrayId[$intTeller] = $pid;
+			
+			$intTeller++;
+		
+		
+		}
+		
+		$intTeller = 0;
+
+		$intCount = count($arrayCats);
+		
+		while($intTeller < $intCount) {
+			$pid = $arrayId[$intTeller];
+			$cat = $arrayCats[$intTeller];
+			
+			
+			$intTeller++;
+			
+			$sql = "SELECT a.product_id,a.product_title,a.product_price,a.product_color,a.product_image,b.id,b.qty FROM $cat a,cart b WHERE a.product_id=b.$pid AND b.user_id=$_SESSION[uid]";
+
+			$query = mysqli_query($conn,$sql);
+
+			if (mysqli_num_rows($query) > 0) {
+			
+			$n=0;
+
+			while($row = mysqli_fetch_array($query)) { 
+
+				$n++;
+
+				$product_id = $row["product_id"];
+				$product_title = $row["product_title"];
+				$product_color = $row["product_color"];
+				$product_price = $row["product_price"];
+				setlocale(LC_MONETARY, 'nl_NL.UTF-8');
+				$product_price = money_format('%!(#1i', $product_price);
+				$product_image = $row["product_image"];
+				$cart_item_id = $row["id"];
+				
+				$qty = $row["qty"];
+				
+
+				
+				echo '
+
+					<div class="row" style="border-bottom: 1px solid #e7e7e7; margin-bottom: 5px;">
+
+						<div class="col-md-2">'.$n.'</div>
+
+						<div style="margin-bottom: 10px;" class="col-md-3"><img class="img-responsive" src="product_images/'.$product_image.'" /></div>
+
+						<div style="line-height: 15px;" class="col-md-4">'.$product_title. '<br></br> Kleur: '.$product_color. '</div>
+
+						<div class="col-md-3">€'.$product_price.'</div>
+
+					</div>';
+			
+			}
+
+
+
+		}
+			
+		}
+		
+
+				
+	
+		
 	}else{
 
 	}
+	
 
+	/*
 	$query = mysqli_query($con,$sql);
 
 	if (isset($_POST["getCartItem"])) {
@@ -369,6 +457,8 @@ if (isset($_POST["Common"])) {
 
 				$product_id = $row["product_id"];
 				$product_title = $row["product_title"];
+				$product_color = $row["product_color"];
+				$product_opslag = $row ["product_opslag"];
 				$product_price = $row["product_price"];
 				setlocale(LC_MONETARY, 'nl_NL.UTF-8');
 				$product_price = money_format('%!(#1i', $product_price);
@@ -377,15 +467,16 @@ if (isset($_POST["Common"])) {
 
 				$qty = $row["qty"];
 
+				
 				echo '
 
-					<div class="row">
+					<div class="row" style="border-bottom: 1px solid #e7e7e7; margin-bottom: 5px;">
 
-						<div class="col-md-3">'.$n.'</div>
+						<div class="col-md-2">'.$n.'</div>
 
-						<div class="col-md-3"><img class="img-responsive" src="product_images/'.$product_image.'" /></div>
+						<div style="margin-bottom: 10px;" class="col-md-3"><img class="img-responsive" src="product_images/'.$product_image.'" /></div>
 
-						<div class="col-md-3">'.$product_title.'</div>
+						<div style="line-height: 15px;" class="col-md-4">'.$product_title. '<br></br> Kleur: '.$product_color. ' <br>Opslag: '.$product_opslag.'</div>
 
 						<div class="col-md-3">€'.$product_price.'</div>
 
@@ -401,7 +492,7 @@ if (isset($_POST["Common"])) {
 
 		}
 
-	}
+	}*/
 
 	if (isset($_POST["checkOutDetails"])) {
 

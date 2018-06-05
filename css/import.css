@@ -74,7 +74,7 @@ a {
 .variant-price{
 	
 	font-size: 30px;
-	margin-top:5px;
+	margin-top: 10px !important;
 	font-family: 'Anton', sans-serif;
 	letter-spacing: 1px; 
 	
@@ -92,7 +92,7 @@ a {
 	margin-bottom: 20px;
 }
 
-
+/* Carousel */
 .preview-pic { 
 	margin-left: auto;
 	margin-right: auto;
@@ -112,7 +112,7 @@ a {
 }
 
 .preview-thumbnail li {
-    width: auto;
+    width: 15%;
 	float: center;
 	list-style:none;
     margin-right: 10px;
@@ -124,8 +124,8 @@ a {
 }
 .preview-thumbnail li img {
 	
-	width: 100px;
-	height: 100px;
+	width: 100%;
+	height: auto;
 	display: block; 
 	margin-left: auto;
 	margin-right: auto;
@@ -144,8 +144,8 @@ a {
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
-	width: 350px;
-    height: 300px;
+	width: 50%;
+    height: auto;
 	margin-bottom: 10%;
 }
 .thumbnail-carousel__thumbnail a{
@@ -155,3 +155,45 @@ a {
 .preview-thumbnail li.active{
 	border-color: #ed1c24;
 }
+
+/* color change */
+
+.preview-same-model {
+	margin-top: 10%;
+	border: none;
+	text-align: center;
+}
+
+.preview-same-model p{
+	text-align: left;
+}
+.preview-same-model li{
+    width: auto;
+	float: left;
+	list-style:none;
+    margin-right: 10px;
+	margin-bottom: 25px;
+	border: 1px solid #e7e7e7;
+	display: inline-block;
+	padding-top: 10px;	
+	padding-bottom: 10px;
+}
+
+.preview-same-model li img {
+	
+	width: 100px;
+	height: 100px;
+	display: block; 
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.preview-same-model li:hover{
+	cursor: pointer;
+	border-color: #ed1c24;
+}
+
+.preview-same-model li.active {
+	border-color: #ed1c24;
+}
+

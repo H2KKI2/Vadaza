@@ -7,7 +7,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>					
 				</button>
-					<a href="#" class="navbar-brand">Vadaza</a>
+					<a href="index.php" class="navbar-brand">Vadaza</a>
 			</div>
 			
 		<div class="collapse navbar-collapse" id="collapse">
@@ -21,14 +21,14 @@
             <ul class="nav navbar-nav navbar-right">
 			<li><a href="contact/contact.php"><span class="glyphicon glyphicon-modal-window"></span>Over Ons / support</a></li>
 				<li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-shopping-cart"></span>Winkelmandje<span style="margin-left: 5px;" class="badge">0</span></a>
-					<div class="dropdown-menu" style="width:400px;">
+					<div class="dropdown-menu" style="width: 500px">
 						<div class="panel panel-success">
 						
 							<div class="panel-heading">
 								<div class="row"> 
 									<div class="col-md-3">Artikelnr.</div>
-									<div class="col-md-3">smartphone foto</div>
-									<div class="col-md-3">smartphone naam</div>
+									<div class="col-md-3">foto</div>
+									<div class="col-md-3">naam</div>
 									<div class="col-md-3">prijs in euro</div>
 								</div>		
 							</div>

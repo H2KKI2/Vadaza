@@ -1,22 +1,4 @@
-	<head>
-		<meta charset="UTF-8">
-		<title>Vadaza</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="style.css">
-		<script src="js/jquery2.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="main.js"></script>
-		
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" /> 
-		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-		<style>
-			@media screen and (max-width:480px){
-				#search{width:80%;}
-				#search_btn{width:30%;float:right;margin-top:-32px;margin-right:10px;}
-			}
-		</style>
-	</head>
+
 
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">	

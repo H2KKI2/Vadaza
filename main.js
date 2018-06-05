@@ -55,7 +55,7 @@ $(document).ready(function(){
 		})
 	
 	})
-
+	
 	
 	$("body").delegate(".selectBrand","click",function(event){
 		event.preventDefault();

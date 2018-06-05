@@ -17,9 +17,19 @@ if (isset($_POST["login_user_with_product"])) {
 <!DOCTYPE html>
 <html>
 	<head>
+	
 		<meta charset="UTF-8">
 		<title>Vadaza</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">		<link rel="stylesheet" href="Style.css">		<script src="js/jquery2.js"></script>		<script src="js/bootstrap.min.js"></script>		<script src="main.js"></script>								<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" /> 		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">		
+		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" />		
+		<link rel="stylesheet" href="css/style.css">	
+		
+		<script src="js/jquery2.js"></script>		
+		<script src="js/bootstrap.min.js"></script>		
+		<script src="main.js"></script>								 	
+		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+		
 	</head>
 <body>
 

@@ -1,0 +1,33 @@
+/* Buttons */
+.btn-bewerken{
+	float: right;
+	margin-bottom: 1%;
+	margin-top: -2%;
+	margin-right: 2%;
+	margin-left: 2%;
+}
+
+/* index.php */
+.panel-heading > form{
+	margin-bottom: 5px;
+	margin-top: 10px;
+}
+
+.brand-header {
+    margin-top: 5%;
+}
+.nav span {
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+.navbar {
+	display: block !important;
+	position: relative !important;
+}
+
+/* Login tekstvakken */
+.login-tekst{ 
+	margin-left: 15px !important; 
+	width: 90% !important;
+}
