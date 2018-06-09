@@ -8,7 +8,7 @@ if(!isset($_SESSION["uid"])){
 include_once 'db.php';
 ?>
 
-
+<html>
 <head>      
 		<meta charset="UTF-8">
 		<title>Vadaza</title>
@@ -23,11 +23,13 @@ include_once 'db.php';
 		<script src="main.js"></script>
 				
 		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        
 </head>
 <body>
 	<?php
 	include_once 'profileMenu.php';
 	?>
+    
 	<div class="container-fluid hoofding-categorie">
 		<div class="row">
 			<div class="col-md-1"></div>
@@ -45,7 +47,7 @@ include_once 'db.php';
 					</div>
 				</div>
 				<div class="panel panel-info" id="scroll">
-					<div class="panel-heading">Smartphones</div>
+					<div class="panel-heading" id="cat">Producten</div>
 					<div class="panel-body">
 						<div id="get_product">
 							

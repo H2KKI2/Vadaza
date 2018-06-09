@@ -26,7 +26,7 @@
 						
 							<div class="panel-heading">
 								<div class="row"> 
-									<div class="col-md-3">Artikelnr.</div>
+									<div class="col-md-3">Aantal</div>
 									<div class="col-md-3">foto</div>
 									<div class="col-md-3">naam</div>
 									<div class="col-md-3">prijs in euro</div>

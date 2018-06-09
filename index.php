@@ -22,6 +22,7 @@ if(isset($_SESSION["uid"])){
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" /> 
+        <script src="js/boostrap-notify.min.js"></script>
 		
 </head>
 

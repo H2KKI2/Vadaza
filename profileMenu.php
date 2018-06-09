@@ -35,7 +35,7 @@
                         <div class="panel panel-success">
                             <div class="panel-heading">
                                 <div class="row"> 
-                                    <div class="col-md-2">Artikelnr.</div>
+                                    <div class="col-md-2">Aantal</div>
                                     <div class="col-md-3">product foto</div>
                                     <div class="col-md-4">product naam</div>
                                     <div class="col-md-3">prijs in euro</div>
@@ -83,8 +83,10 @@
                         if($row['Admin'] ){
 
                             echo '<li class="divider"></li>';
-
                             echo '<li><a href="ProductToevoegen.php" style="text-decoration:none; color:blue;">Product toevoegen</a></li>';
+                            
+                            echo '<li class="divider"></li>';
+                            echo '<li><a href="../scripts/Password_reset.php" style="text-decoration:none; color:blue;">Reset user password</a></li>';
 
                         }
 
