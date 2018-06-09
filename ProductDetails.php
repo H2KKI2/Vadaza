@@ -1,8 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["uid"])){
-	include_once 'indexMenu.php';
-}else{include_once 'profileMenu.php';}
+
 
 include "db.php";
 
@@ -17,339 +15,289 @@ $pro_price = "null";
 if(isset($_GET['id'])) {
     $proID = $_GET['id'];
 }
-   
-	
 
-	$product_query = "SELECT * FROM products LEFT JOIN brands ON product_brand = brands.brand_id WHERE product_id = '$proID'";
-	$run_query = mysqli_query($con,$product_query);
-	if(mysqli_num_rows($run_query) > 0){
-		while($row = mysqli_fetch_array($run_query)){
-			$pro_id    = $row['product_id'];
-			$pro_cat   = $row['product_cat'];
-			$pro_brand = $row['brand_title'];
-			$pro_title = $row['product_title'];
-			$pro_price = $row['product_price'];
-			setlocale(LC_MONETARY, 'nl_NL.UTF-8');
-			$pro_price = money_format('%!(#1i', $pro_price);
-			$pro_image = $row['product_image'];
-            $pro_ram = $row['product_ram'];
-            $pro_opslag = $row['product_opslag'];
-                        $pro_geheugen = $row['product_Geheugenkaartlezer'];
-                        $pro_introdat = $row['product_introductiedatum'];
-                        $pro_SATcat = $row['product_SATcat'];
-                        $pro_SATwaarde = $row['product_SATwaarde'];
-                        $pro_OS = $row['product_OS'];
-                
-                        $pro_versie = $row['product_versie'];
-                        $pro_type = $row['product_typemobiel'];
-                        $pro_spraak = $row['product_spraakbesturing'];
-                        $pro_VR = $row['product_AanbevolenVR'];
-                        $pro_dia = $row['product_Schermdiagonaal'];
-                        $pro_resolutie = $row['product_Resolutie'];
-                        $pro_pixels = $row['product_pixeldichtheid'];
-                        $pro_touch = $row['product_Touchscreen'];
-                        $pro_opslag = $row['product_opslag'];
-                
-                
-                
-                
-        }
+
+
+$product_query = "SELECT * FROM products LEFT JOIN brands ON product_brand = brands.brand_id WHERE product_id = '$proID'";
+$run_query = mysqli_query($con,$product_query);
+if(mysqli_num_rows($run_query) > 0){
+    while($row = mysqli_fetch_array($run_query)){
+        $pro_id    = $row['product_id'];
+        $pro_cat   = $row['product_cat'];
+		$pro_color_id  = $row['color_id'];
+        $pro_brand = $row['brand_title'];
+        $pro_title = $row['product_title'];
+		$pro_fullTitle = $row['product_fullTitle'];
+        $pro_price = $row['product_price'];
+        setlocale(LC_MONETARY, 'nl_NL.UTF-8');
+        $pro_price = money_format('%!(#1i', $pro_price);
+        $pro_image = $row['product_image'];
+		$pro_image_front = $row['product_image_front'];
+		$pro_image_side = $row['product_image_side'];
+		$pro_image_back = $row['product_image_back'];
+		$pro_color = $row['product_color'];
+		
+        $gsm_ram = $row['gsm_ram'];
+        $gsm_opslag = $row['gsm_opslag'];
+		$gsm_schermDiagonaal = $row['gsm_schermDiagonaal'];
+		$gsm_batterijDuur = $row['gsm_batterijDuur'];
+		$gsm_vinger = $row['gsm_vinger'];
+		if($gsm_vinger){
+			$gsm_vinger = "<i class=' check material-icons mdl-color-text--green'>done</i>";
+		}else{$gsm_vinger = "<i class=' cross material-icons mdl-color-text--red'>clear</i>";}
+		
+		
+		
+		$hoesje_model = $row['hoesje_model'];
+		$hoesje_materiaal = $row['hoesje_materiaal'];
+		
+		$hoesje_pasje = $row['hoesje_pasje'];
+		if($hoesje_pasje){
+			$hoesje_pasje = "<i class=' check material-icons mdl-color-text--green'>done</i>";
+		}else{$hoesje_pasje = "<i class=' cross material-icons mdl-color-text--red'>clear</i>";}
+		
+		$hoesje_water = $row['hoesje_water'];
+		if($hoesje_water){
+			$hoesje_water = "<i class=' check material-icons mdl-color-text--green'>done</i>";
+		}else{$hoesje_water = "<i class=' cross material-icons mdl-color-text--red'>clear</i>";}
+		
+		$hoesje_val = $row['hoesje_val'];
+		if($hoesje_val){
+			$hoesje_val = "<i class=' check material-icons mdl-color-text--green'>done</i>";
+		}else{$hoesje_val = "<i class=' cross material-icons mdl-color-text--red'>clear</i>";}
+		
+		
+		
+		$powerbank_capaciteit = $row['powerbank_capaciteit'];
+		$powerbank_vermogen = $row['powerbank_vermogen'];
+		$powerbank_batterijStatus = $row['powerbank_batterijStatus'];
+		$powerbank_gewicht = $row['powerbank_gewicht'];
+		$powerbank_stroomsterkte = $row['powerbank_stroomsterkte'];
+		
+		$screen_materiaal = $row['screen_materiaal'];
+		$screen_bescherming = $row['screen_bescherming'];
+		
+		$oordopje_type = $row['oordopje_type'];
+		$oordopje_bluetooth = $row['oordopje_bluetooth'];
+		$oordopje_noiseCancel = $row['oordopje_noiseCancel'];
+		$oordopje_waterBestendig = $row['oordopje_waterBestendig'];
+		
+		$koptelefoon_type = $row['koptelefoon_type'];
+		$koptelefoon_bluetooth = $row['koptelefoon_bluetooth'];
+		$koptelefoon_noiseCancel = $row['koptelefoon_noiseCancel'];
+		$koptelefoon_mic = $row['koptelefoon_mic'];
+		$koptelefoon_geluidsKwaliteit = $row['koptelefoon_geluidsKwaliteit'];
+		
     }
+}
 
-	$rating_query = "SELECT * FROM rating WHERE product_id= '$proID'";
-	$run_query = mysqli_query($con,$rating_query);
-	if(mysqli_num_rows($run_query) > 0){
-		while($row = mysqli_fetch_array($run_query)){
-			$rating_id =$row['rating_id'];
-			$user_id =$row['user_id'];
-			$product_id =$row['product_id'];
-			$rating =$row['rating'];
-			$comment =$row['comment'];
-		}
-	}
+$intTeller_models = 0;
+$phone_models = array();
+$model_query = "SELECT product_id, product_image FROM products WHERE color_id= '$pro_color_id'";
+$run_query = mysqli_query($con,$model_query);
+if(mysqli_num_rows($run_query) > 0){
+    while($row = mysqli_fetch_array($run_query)){
+        $phone_id_pv = $row['product_id'];
+        $phone_img_pv = $row['product_image'];
+		$phone_models[$intTeller_models] = $phone_id_pv." ".$phone_img_pv;
+		$intTeller_models++;
+    }
+}
+
+$rating_query = "SELECT * FROM rating WHERE product_id= '$proID'";
+$run_query = mysqli_query($con,$rating_query);
+if(mysqli_num_rows($run_query) > 0){
+    while($row = mysqli_fetch_array($run_query)){
+        $rating_id =$row['rating_id'];
+        $user_id =$row['user_id'];
+        $product_id =$row['product_id'];
+        $rating =$row['rating'];
+        $comment =$row['comment'];
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html>
-<head>
-	<link type="text/css" href="css/import.css" rel="stylesheet">
-	
-</head>
-<body>
-    
-    
-    
- 
-	
-<div class=b-main>
-  <div class=b-list>
-    
-     
-      
-        
-     
-  </div>
-  <div class=b-variant>
-   <figure class=variant-wrapper>
-     <p class=description-variant>
-      
-       <span></span>
-       <i class=description-variant-span></i>
-     </p>
-     <img style='margin-top: 30%;' src='product_images/<?php echo($pro_image); ?>'>
-     <div>
-       <p class=variant-price>
-         Prijs: <br><span>€ <?php echo ($pro_price)?></span><br> incl. btw
-       </p>
-      </div>
-       <ul class=variant-description-list>
-         <li><span>Artikelnummer: <?php echo $pro_id ?></span></li>
-         <li><span>Merk: <?php echo $pro_brand ?></span></li>
-         <li><span>Garantie: 2 jaar</span></li>
-       </ul>
-	   
-      <button pid=<?php echo ($pro_id)?> style='height: 40px; width:70%; margin-top: 3px; font-size: 10px; margin-left: 15%;' id='product' class='mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>Winkelmandje</button>
+    <head>
 		
-   </figure>
-   <figure class=variant-wrapper>
-     <p class=description-variant>
-    
-   </figure>
-  </div>
+        <title>Vadaza</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css"> 
+		<link rel="stylesheet" href="css/material-icons.css">
+		
+		<link type="text/css" href="css/style.css" rel="stylesheet">
+        <link type="text/css" href="css/import.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">	
+        <script src="js/jquery2.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="main.js"></script>
+		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
-  <div class=b-description>
-    <div class=description-profile>
-      <input type=checkbox id=description-manipulation-profile><label class=description-describe-text for=description-manipulation-profile>Belangrijke Specificaties</label>
-      <div class=description-list-wrapper>
-       <table class=description-table-list>
-         <tr class=description-table-list-name>
-           <th>Geheugen</th>
-           <th></th>
-           <th></th>
-           <th></th>
-         </tr>
-        <tr>
-          <td>RAM-geheugen</td>
-          <td><?php echo ($pro_ram)?>GB</td>
-          
-        </tr>
-        <tr>
-          <td>Totale opslagcapaciteit</td>
-          <td><?php echo ($pro_opslag)?>GB</td>
-          
-        </tr>
-              <tr>
-          <td>Geheugenkaartlezer</td>
-          <td><?php echo ($pro_Geheugenkaarlezer)?></td>
-          
-        </tr>
-             <tr class=description-table-list-name>
-           <th>Algemene eigenschappen</th>
-           <th></th>
-           <th></th>
-           <th></th>
-         </tr>
-        <tr>
-          <td>Introductiedatum</td>
-          <td><?php echo ($pro_Introductiedatum)?></td>
-          
-        </tr>
-        <tr>
-          <td>SAT-categorie</td>
-          <td><?php echo ($pro_SATcat)?></td>
-          
-        </tr>
-        <tr>
-          <td>SAT-waarde</td>
-          <td><?php echo ($pro_SATwaarde)?>W/kg</td>
-          
-        </tr>
-        <tr>
-          <td>Besturingssysteem</td>
-          <td><?php echo ($pro_OS)?></td>
-          
-        </tr>
-        <tr>
-          <td>Versie IOS</td>
-          <td><?php echo ($pro_versie)?></td>
-          
-           
-        </tr>
-                   <tr>
-          <td>type mobiele telefoon</td>
-          <td><?php echo ($pro_typemobiel)?></td>
-          
-        </tr>
-              <tr>
-          <td>spraakbesturing</td>
-          <td><?php echo ($pro_spraakbesturing)?></td>
-          
-        </tr>
-              <tr>
-          <td>Aanbevolen voor VR</td>
-          <td><?php echo ($pro_AanbevolenVR)?></td>
-          
-        </tr>
-                <tr class=description-table-list-name>
-           <th>Beeldscherm</th>
-           <th></th>
-           <th></th>
-           <th></th>
-         </tr>
-        <tr>
-          <td>Schermdiagonaal</td>
-          <td>4.7inch</td>
-          
-        </tr>
-        <tr>
-          <td>Resolutie</td>
-          <td>750x1334 pixels</td>
-          
-        </tr>
-        <tr>
-          <td>pixeldichtheid</td>
-          <td>326PPI</td>
-          
-        </tr>
-        <tr>
-          <td>Touchscreen</td>
-          <td>Ja</td>
-          
-        </tr>
-        <tr>
-          <td>Virtueel-toetsenbord</td>
-          <td>Ja</td>
-          
-           
-        </tr>
-                   <tr>
-          <td>Scherpte</td>
-          <td>HD Ready(720p)</td>
-          
-        </tr>
-              <tr>
-          <td>Schermtype</td>
-          <td>IPS-LCD</td>
-          
-        </tr>
-                  <tr class=description-table-list-name>
-           <th>Simkaart</th>
-           <th></th>
-           <th></th>
-           <th></th>
-         </tr>
-        <tr>
-          <td>Simlockvrij</td>
-          <td>Ja</td>
-          
-        </tr>
-        <tr>
-          <td>Type simkaartslot</td>
-          <td>Nano sim</td>
-          
-        </tr>
-        <tr>
-          <td>Dual sim</td>
-          <td>Nee</td>
-          
-        </tr>
-                    <tr class=description-table-list-name>
-           <th>Camera</th>
-           <th></th>
-           <th></th>
-           <th></th>
-         </tr>
-        <tr>
-          <td>Camera</td>
-          <td>Ja</td>
-          
-        </tr>
-        <tr>
-          <td>Aantal megapixels</td>
-          <td>8 megapixels</td>
-          
-        </tr>
-        <tr>
-          <td>Autofocus</td>
-          <td>Ja</td>
-          
-        </tr>
-        
         
 
-      </table>
-     </div>
-    </div>
-    <div class=description-security>
-      <input type=checkbox id=description-manipulation-security><label class=description-describe-text for=description-manipulation-security>Meer Specificaties</label>
-      <div class=description-list-wrapper>
-       <table class="description-table-list visible-table">
-         <tr class=description-table-list-name>
-           <th>Fysieke eigenschappen</th>
-           <th></th>
-           <th></th>
-           <th></th>
-         </tr>
-        <tr>
-          <td>Hoogte</td>
-          <td>13.8cm</td>
-          
-        </tr>
-        <tr>
-          <td>Breedte</td>
-          <td>6.7cm</td>
-          
-        </tr>
-        <tr>
-          <td>Diepte</td>
-          <td>0.71cm</td>
-          
-        </tr>
-        <tr>
-          <td>Gewicht</td>
-          <td>0.143KG</td>
-          
-        </tr>
-        <tr>
-          <td>Materiaal</td>
-          <td>Glas/Metaal</td>
-          
-        </tr>
-        <tr>
-          <td>waterbestendig</td>
-          <td>Nee</td>
-          
-        </tr>
-            <tr>
-          <td>stofbestendig</td>
-          <td>Nee</td>
-          
-        </tr>
-            <tr>
-          <td>schokbestendig</td>
-          <td>Nee</td>
-          
-        </tr>
-            <tr>
-          <td>aansluitingen</td>
-          <td>Apple Lightning</td>
-         
-        </tr>
-            <tr>
-          <td>Hoofdtelefoonaansluiting</td>
-          <td>Ja</td>
-          
-        </tr>
-             <tr>
-          <td>geluidsweergave</td>
-          <td>Mono</td>
-          
-        </tr>
-        
-      </table>
-      </div>
-    </div>
+    </head>
+
+    <body>
+ 
+<?php if(!isset($_SESSION["uid"])){
+    include_once 'indexMenu.php';
+	}
+	else{
+	include_once 'profileMenu.php';
+	} 
+	?>         
+			
+			<div class='wrapper'>
+                    <div class="phone-wrapper col-sm-4">
+						<div class="thumbnail-carousel">
+							<div class="preview-pic tab-content">
+								<div class="tab-pane active" id="pic1"><img src='product_images/<?php echo($pro_image); ?>' /></div>
+								
+								<?php if($pro_image_front != '0'){ ?>
+								<div class="tab-pane" id="pic2"><img src='product_images/<?php echo($pro_image_front); ?>' /></div>	
+								
+								<?php } if($pro_image_side != '0'){ ?>
+								<div class="tab-pane" id="pic3"><img src='product_images/<?php echo($pro_image_side); ?>' /></div>	
+								
+								<?php } if($pro_image_back != '0'){ ?>
+								<div class='tab-pane' id='pic4'><img src='product_images/<?php echo($pro_image_back);?>' /></div>
+							<?php } ?>
+							</div>
+							
+							<ul class="preview-thumbnail ">
+							
+								<li class="active"><a data-target="#pic1" data-toggle="tab"><img src='product_images/<?php echo($pro_image); ?>' /></a></li>
+								<?php if($pro_image_front != '0'){ ?>
+								<li><a data-target="#pic2" data-toggle="tab"><img src='product_images/<?php echo($pro_image_front); ?>' /></a></li>
+								<?php } if($pro_image_side != '0'){ ?>
+								<li><a data-target="#pic3" data-toggle="tab"><img src='product_images/<?php echo($pro_image_side); ?>' /></a></li>
+								<?php } if($pro_image_back != '0'){ ?>
+								<li><a data-target='#pic4' data-toggle='tab'><img src='product_images/<?php echo($pro_image_back);?>' /></a></li>
+							<?php } ?>
+							</ul>
+						</div>
+					
+					
+						<button pid=<?php echo ($pro_id)?> id='product' class='btnWinkelmandje mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--blue'>Winkelmandje </button>
+						
+						<table class="table table-striped tblSpecifications">
+						<thead>
+							<tr>						
+								<th >Beknopte specificaties</th>
+								<th ></th>
+							</tr>
+						</thead>
+						
+					<?php if($pro_cat == 2){ 
+						echo "
+							<tbody>
+								<tr >				
+									<td>Ram-geheugen</td>
+									<td>$gsm_ram</td>
+								</tr>
+								<tr>						
+									<td>Totale opslagcapaciteit</td>
+									<td>$gsm_opslag</td>
+								</tr>
+								<tr>					
+									<td>Schermdiagonaal</td>
+									<td>$gsm_schermDiagonaal</td>
+								</tr>
+								<tr>					
+									<td>Batterijduur</td>
+									<td>$gsm_batterijDuur</td>
+								</tr>
+								<tr>					
+									<td>Vingerafdruksensor</td>	
+									<td>$gsm_vinger</td>
+								</tr>
+							</tbody>";
+							
+					}else if($pro_cat == 3){
+						
+						echo "
+							<tbody>
+								<tr >				
+									<td>Model</td>
+									<td>$hoesje_model</td>
+								</tr>
+								<tr>						
+									<td>Materiaal</td>
+									<td>$hoesje_materiaal</td>
+								</tr>
+								<tr>					
+									<td>Plek voor Pasjes</td>
+									<td>$hoesje_pasje</td>
+								</tr>
+								<tr>					
+									<td>Waterbestendig</td>
+									<td>$hoesje_water</td>
+								</tr>
+								<tr>					
+									<td>Valbestendig</td>	
+									<td>$hoesje_val</td>
+								</tr>
+							</tbody>";
+					
+					 }else{ 						
+						echo "<td>Geen specificaties</td>";
+					}?>
+						
+					</table>
+					
+					</div>
+			
+					
+                    <div class="details col-sm-6">
+					
+					<p class="phone-title"> <?php echo ($pro_fullTitle); ?> </p>
+					
+						<p class="price-wrapper">
+                           <span class="variant-price mdl-color-text--blue">€ <?php echo ($pro_price)?></span> <span class="price-date mdl-color-text--green"> <i class="price-icon material-icons">done</i> Morgen in huis</span>
+						</p>
+						
+						<div class="detail-wrapper">
+                       
+					   
+					   <div class="row"><i class="infoIcon material-icons">label</i> <p class="info">  Voor <strong>01:00 uur</strong>  besteld, morgen <strong>gratis</strong> in huis.</p> </div>
+					   <div class="row"><i class="infoIcon material-icons">label</i> <p class="info"><strong>2 jaar</strong> garantie op dit product.</p></div>
+					   <div class="row"><i class="infoIcon material-icons">label</i> <p class="info">Binnen 30 dagen <strong>gratis</strong> retourneren.</p></div>
+					   <div class="row"><i class="infoIcon material-icons">label</i> <p class="info">Hulp nodig? <strong>Dag</strong> en <strong>nacht</strong> klantenservice.</p></div>
+					   <div class="row"><i class="infoIcon material-icons">label</i> <p class="info">Leverbaar in zowel <strong>Nederland</strong> als <strong>België</strong>.</p></div>					   
+					   
+						</div>
+						
+						<div class="preview-same-model"> 
+							<p>Kleur Kiezen:</p>
+							<p class="kiesKleur"><?php if($pro_color_id == 0) { echo "Kleur kiezen niet mogelijk.";} ?></p>
+							<?php
+								$intTeller_models = 0;
+								$intSize_modelArray = count($phone_models);
+								while($intTeller_models < $intSize_modelArray) {
+									$strPhone = $phone_models[$intTeller_models];
+									$keywords = preg_split("/[\s,]+/", $strPhone);
+									$phone_id_pv = $keywords[0];
+									$phone_img_pv = $keywords[1];
+									
+									if($pro_color_id != 0)
+									{
+									echo ("<li><a href='ProductDetails.php?id=$phone_id_pv'><img src='product_images/$phone_img_pv'/></a></li>");
+									}else{}
+									$intTeller_models++;
+								}							
+							?>
+							
+						</div>    
+                    </div>
+			
+				</div>
 	
-	
-
-    </body>
-</html>
+						
+				
+			
+            </body>
+        </html>

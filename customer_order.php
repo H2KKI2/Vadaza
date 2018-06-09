@@ -12,7 +12,7 @@ if(!isset($_SESSION["uid"])){
 		<title>Vadaza</title>
 		
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" href="Style.css">
+		<link rel="stylesheet" href="css/style.css">
 		<script src="js/jquery2.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="main.js"></script>

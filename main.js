@@ -13,7 +13,10 @@ $(document).ready(function(){
 				
 			}
 		})
+		
 	}
+	
+
 	
 	function brand(){
 		$.ajax({
@@ -41,7 +44,6 @@ $(document).ready(function(){
 		$("#get_product");
 		event.preventDefault();
 		var cid = $(this).attr('cid');
-		
 			$.ajax({
 			url		:	"action.php",
 			method	:	"POST",
@@ -53,8 +55,18 @@ $(document).ready(function(){
 				}
 			}
 		})
-	
+		
+		$.ajax({
+			url		:	"action.php",
+			method	:	"POST",
+			data	:	{get_Category:1,cat_id:cid},
+			success	:	function(data){
+				$("#cat").html(data);
+			}
+		})
 	})
+	
+
 
 	
 	$("body").delegate(".selectBrand","click",function(event){

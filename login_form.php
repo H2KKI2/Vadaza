@@ -57,7 +57,62 @@ if (isset($_POST["login_user_with_product"])) {
 							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">								<label class="mdl-textfield__label" for="email">Email</label>								<input class="mdl-textfield__input" type="email" name="email" id="email">							</div>																	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">								<label class="mdl-textfield__label" for="email">Wachtwoord</label>								<input class="mdl-textfield__input" type="password" name="password" id="password">							</div>
 							<p><br/></p>
 							<a href="#" style="color:#333; list-style:none;">Wachtwoord vergeten</a><input type="submit" class="btn btn-success" style="float:right;" Value="Login">
+							<div class="row">
+							<div style='margin-left:20px;'class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="f_name" name="f_name">
+								<label class="mdl-textfield__label" for="f_name">Voornaam</label>
+							</div>
+							<div style='margin-left:50px;'class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="l_name" name="l_name">
+								<label class="mdl-textfield__label" for="f_name">Achternaam</label>
+							</div>
+					</div>
+					<div class="row">
+							<div style='width:94%; margin-left:20px;'class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="email" id="email" name="email">
+								<label class="mdl-textfield__label" for="email">Email</label>
+							</div>
+					</div>	
+					<div class="row">
+							<div style='width:94%; margin-left:20px;'class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="password" id="password" name="password">
+								<label class="mdl-textfield__label" for="password">Wachtwoord</label>
+							</div>
+					</div>	
+					
+					<div class="row">
+							<div style='width:94%; margin-left:20px;'class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="password" id="repassword" name="repassword">
+								<label class="mdl-textfield__label" for="repassword">Wachtwoord opnieuw</label>
+							</div>
+					</div>
+						
+					<div  class="row">
+							<div style='width:94%; margin-left:20px;'class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="mobile" name="mobile">
+								<label class="mdl-textfield__label" for="mobile">Telefoonnummer</label>
+							</div>
+					</div>	
+					
+					<div class="row">
+							<div style='margin-left:20px;'class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="address1" name="address1">
+								<label class="mdl-textfield__label" for="address1">Adres</label>
+							</div>
 							
+							
+							<div style='margin-left:50px;'class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="address2" name="address2">
+								<label class="mdl-textfield__label" for="address2">Huisnummer</label>
+							</div>						
+					</div>	
+					
+
+
+
+
+
+
 							<div><a href="customer_registration.php?register=1">Heeft u nog geen account?</a></div>						
 						</form>
 				</div>

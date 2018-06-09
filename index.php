@@ -4,16 +4,32 @@ if(isset($_SESSION["uid"])){
 	header("location:profile.php");
 }
 ?>
-<!DOCTYPE html>
 <html>
-	<?php
-	include_once "indexMenu.php";
-	?>
+<head>      
+		<meta charset="UTF-8">
+		<title>Vadaza</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<script src="js/jquery2.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="main.js"></script>
+		<script src="js/cat.js"></script>
+		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>	
+		
+
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" /> 
+		
+</head>
+
+<body>
+
+<?php require_once "indexMenu.php";?>
         
-</div>	
-	<p><br/></p>
-	<p><br/></p>
-	<p><br/></p>
+<div class="brand-header hoofding-categorie">	
 	
 	<div class="container-fluid">
 		<div class="row">
@@ -32,7 +48,7 @@ if(isset($_SESSION["uid"])){
 					</div>
 				</div>
 				<div class="panel panel-info">
-					<div class="panel-heading hoofding-categorie" > smartphones </div>
+					<div class="panel-heading" id="cat">Producten</div>
 					<div class="panel-body">
 						<div id="get_product">
 							
@@ -45,53 +61,7 @@ if(isset($_SESSION["uid"])){
 			<div class="col-md-1"></div>
 		</div>
 	</div>
+	</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
