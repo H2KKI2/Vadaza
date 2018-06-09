@@ -273,8 +273,21 @@ a {
 	
 }
 
-/* --Detail pagina - specificaties -- */
-
+/* --Detail pagina - animatie -- */
+.add{
+    position: absolute;
+    top: 5%;
+    right: 75%;
+    width: 40px;
+    opacity: 0;
+    animation: add 3s ease forwards;
+}
+@keyframes add{
+    0%{opacity: 0; top: 25%; width: 460px}
+    20%{opacity 0.75; top: 7%; width: 100px}
+    50%{opacity: 1; right: 10%; top: 7%}
+    100%{opacity: 0; right: 10%; top: 0%}
+}
 
 
 

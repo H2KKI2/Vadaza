@@ -37,6 +37,7 @@ if(mysqli_num_rows($run_query) > 0){
 		$pro_image_back = $row['product_image_back'];
 		$pro_color = $row['product_color'];
 		
+		//gsm
         $gsm_ram = $row['gsm_ram'];
         $gsm_opslag = $row['gsm_opslag'];
 		$gsm_schermDiagonaal = $row['gsm_schermDiagonaal'];
@@ -47,7 +48,7 @@ if(mysqli_num_rows($run_query) > 0){
 		}else{$gsm_vinger = "<i class=' cross material-icons mdl-color-text--red'>clear</i>";}
 		
 		
-		
+		//hoesje
 		$hoesje_model = $row['hoesje_model'];
 		$hoesje_materiaal = $row['hoesje_materiaal'];
 		
@@ -67,25 +68,65 @@ if(mysqli_num_rows($run_query) > 0){
 		}else{$hoesje_val = "<i class=' cross material-icons mdl-color-text--red'>clear</i>";}
 		
 		
-		
+		//powerbank
 		$powerbank_capaciteit = $row['powerbank_capaciteit'];
 		$powerbank_vermogen = $row['powerbank_vermogen'];
-		$powerbank_batterijStatus = $row['powerbank_batterijStatus'];
+		
+		$powerbank_batterijstatus = $row['powerbank_batterijstatus'];
+		if($powerbank_batterijstatus){
+			$powerbank_batterijstatus = "<i class=' check material-icons mdl-color-text--green'>done</i>";
+		}else{$powerbank_batterijstatus = "<i class=' cross material-icons mdl-color-text--red'>clear</i>";}
+
 		$powerbank_gewicht = $row['powerbank_gewicht'];
 		$powerbank_stroomsterkte = $row['powerbank_stroomsterkte'];
 		
+		
+		//screenprotector
 		$screen_materiaal = $row['screen_materiaal'];
 		$screen_bescherming = $row['screen_bescherming'];
 		
+		//accu
+		$accu_geschicktMerk = $row['$accu_geschicktMerk'];
+		$accu_batterijType = $row['accu_batterijType'];
+		$accu_batterijCapaciteit = $row['accu_batterijCapaciteit'];
+		$accu_vermogen = $row['accu_vermogen'];
+		
+		
+		//oordopjes
 		$oordopje_type = $row['oordopje_type'];
 		$oordopje_bluetooth = $row['oordopje_bluetooth'];
-		$oordopje_noiseCancel = $row['oordopje_noiseCancel'];
-		$oordopje_waterBestendig = $row['oordopje_waterBestendig'];
+		if($oordopje_bluetooth){
+			$oordopje_bluetooth = "<i class=' check material-icons mdl-color-text--green'>done</i>";
+		}else{$oordopje_bluetooth = "<i class=' cross material-icons mdl-color-text--red'>clear</i>";}
 		
+		$oordopje_noiseCancel = $row['oordopje_noiseCancel'];
+		if($oordopje_noiseCancel){
+			$oordopje_noiseCancel = "<i class=' check material-icons mdl-color-text--green'>done</i>";
+		}else{$oordopje_noiseCancel = "<i class=' cross material-icons mdl-color-text--red'>clear</i>";}
+		
+		$oordopje_waterBestendig = $row['oordopje_waterBestendig'];
+		if($oordopje_waterBestendig){
+			$oordopje_waterBestendig = "<i class=' check material-icons mdl-color-text--green'>done</i>";
+		}else{$oordopje_waterBestendig = "<i class=' cross material-icons mdl-color-text--red'>clear</i>";}
+		
+		
+		//koptelefoon
 		$koptelefoon_type = $row['koptelefoon_type'];
 		$koptelefoon_bluetooth = $row['koptelefoon_bluetooth'];
+		if($koptelefoon_bluetooth){
+			$koptelefoon_bluetooth = "<i class=' check material-icons mdl-color-text--green'>done</i>";
+		}else{$koptelefoon_bluetooth = "<i class=' cross material-icons mdl-color-text--red'>clear</i>";}
+		
 		$koptelefoon_noiseCancel = $row['koptelefoon_noiseCancel'];
+		if($koptelefoon_noiseCancel){
+			$koptelefoon_noiseCancel = "<i class=' check material-icons mdl-color-text--green'>done</i>";
+		}else{$koptelefoon_noiseCancel = "<i class=' cross material-icons mdl-color-text--red'>clear</i>";}
+		
 		$koptelefoon_mic = $row['koptelefoon_mic'];
+		if($koptelefoon_mic){
+			$koptelefoon_mic = "<i class=' check material-icons mdl-color-text--green'>done</i>";
+		}else{$koptelefoon_mic = "<i class=' cross material-icons mdl-color-text--red'>clear</i>";}
+		
 		$koptelefoon_geluidsKwaliteit = $row['koptelefoon_geluidsKwaliteit'];
 		
     }
@@ -132,10 +173,12 @@ if(mysqli_num_rows($run_query) > 0){
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 		<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">	
-        <script src="js/jquery2.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
         <script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery2.js"></script>
         <script src="main.js"></script>
 		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <script src="js/boostrap-notify.min.js"></script>
 
         
 
@@ -183,78 +226,13 @@ if(mysqli_num_rows($run_query) > 0){
 					
 					
 						<button pid=<?php echo ($pro_id)?> id='product' class='btnWinkelmandje mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-color--blue'>Winkelmandje </button>
-						
-						<table class="table table-striped tblSpecifications">
-						<thead>
-							<tr>						
-								<th >Beknopte specificaties</th>
-								<th ></th>
-							</tr>
-						</thead>
-						
-					<?php if($pro_cat == 2){ 
-						echo "
-							<tbody>
-								<tr >				
-									<td>Ram-geheugen</td>
-									<td>$gsm_ram</td>
-								</tr>
-								<tr>						
-									<td>Totale opslagcapaciteit</td>
-									<td>$gsm_opslag</td>
-								</tr>
-								<tr>					
-									<td>Schermdiagonaal</td>
-									<td>$gsm_schermDiagonaal</td>
-								</tr>
-								<tr>					
-									<td>Batterijduur</td>
-									<td>$gsm_batterijDuur</td>
-								</tr>
-								<tr>					
-									<td>Vingerafdruksensor</td>	
-									<td>$gsm_vinger</td>
-								</tr>
-							</tbody>";
-							
-					}else if($pro_cat == 3){
-						
-						echo "
-							<tbody>
-								<tr >				
-									<td>Model</td>
-									<td>$hoesje_model</td>
-								</tr>
-								<tr>						
-									<td>Materiaal</td>
-									<td>$hoesje_materiaal</td>
-								</tr>
-								<tr>					
-									<td>Plek voor Pasjes</td>
-									<td>$hoesje_pasje</td>
-								</tr>
-								<tr>					
-									<td>Waterbestendig</td>
-									<td>$hoesje_water</td>
-								</tr>
-								<tr>					
-									<td>Valbestendig</td>	
-									<td>$hoesje_val</td>
-								</tr>
-							</tbody>";
-					
-					 }else{ 						
-						echo "<td>Geen specificaties</td>";
-					}?>
-						
-					</table>
 					
 					</div>
 			
 					
                     <div class="details col-sm-6">
 					
-					<p class="phone-title"> <?php echo ($pro_fullTitle); ?> </p>
+					<p class="phone-title"> <?php echo ($pro_title); ?> </p>
 					
 						<p class="price-wrapper">
                            <span class="variant-price mdl-color-text--blue">€ <?php echo ($pro_price)?></span> <span class="price-date mdl-color-text--green"> <i class="price-icon material-icons">done</i> Morgen in huis</span>
@@ -295,9 +273,205 @@ if(mysqli_num_rows($run_query) > 0){
                     </div>
 			
 				</div>
-	
+		
+				<table class="table table-striped tblSpecifications">
+						<thead>
+							<tr>						
+								<th >Beknopte specificaties</th>
+								<th ></th>
+							</tr>
+						</thead>
 						
-				
+					
+					<?php if($pro_cat == 2){ 
+					//gsm
+						echo "
+							<tbody>
+								<tr >				
+									<td>Ram-geheugen</td>
+									<td>$gsm_ram</td>
+								</tr>
+								<tr>						
+									<td>Totale opslagcapaciteit</td>
+									<td>$gsm_opslag</td>
+								</tr>
+								<tr>					
+									<td>Schermdiagonaal</td>
+									<td>$gsm_schermDiagonaal</td>
+								</tr>
+								<tr>					
+									<td>Batterijduur</td>
+									<td>$gsm_batterijDuur</td>
+								</tr>
+								<tr>					
+									<td>Vingerafdruksensor</td>	
+									<td>$gsm_vinger</td>
+								</tr>
+							</tbody>";
+					
+					//hoesje
+					}elseif($pro_cat == 3){
+						
+						echo "
+							<tbody>
+								<tr >				
+									<td>Model</td>
+									<td>$hoesje_model</td>
+								</tr>
+								<tr>						
+									<td>Materiaal</td>
+									<td>$hoesje_materiaal</td>
+								</tr>
+								<tr>					
+									<td>Plek voor pasjes</td>
+									<td>$hoesje_pasje</td>
+								</tr>
+								<tr>					
+									<td>Waterbestendig</td>
+									<td>$hoesje_water</td>
+								</tr>
+								<tr>					
+									<td>Valbestendig</td>	
+									<td>$hoesje_val</td>
+								</tr>
+							</tbody>";
+    
+					//powerbank
+                    }elseif($pro_cat == 6){
+						
+						echo "
+							<tbody>
+								<tr >				
+									<td>Capaciteit</td>
+									<td>$powerbank_capaciteit</td>
+								</tr>
+								<tr>						
+									<td>Vermogen</td>
+									<td>$powerbank_vermogen</td>
+								</tr>
+								<tr>					
+									<td>Weergave batterijstatus</td>
+									<td>$powerbank_batterijstatus</td>
+								</tr>
+								<tr>					
+									<td>Gewicht</td>
+									<td>$powerbank_gewicht</td>
+								</tr>
+								<tr>					
+									<td>Stroomsterkte</td>	
+									<td>$powerbank_stroomsterkte</td>
+								</tr>
+							</tbody>";
+					
+					//screenprotector
+					 }elseif($pro_cat == 7){
+						
+						echo "
+							<tbody>
+								<tr >				
+									<td>Materiaal</td>
+									<td>$screen_materiaal</td>
+								</tr>
+								<tr>						
+									<td>Mate van bescherming</td>
+									<td>$screen_bescherming</td>
+								</tr>
+							</tbody>";
+					
+					//accu
+					 }elseif($pro_cat == 8){
+						
+						echo "
+							<tbody>
+								<tr >				
+									<td>Geschikt voor merk</td>
+									<td>$accu_geschicktMerk</td>
+								</tr>
+								<tr>						
+									<td>Type batterij</td>
+									<td>$accu_batterijType</td>
+								</tr>
+								<tr >				
+									<td>Batterij capaciteit</td>
+									<td>$accu_batterijCapaciteit</td>
+								</tr>
+								<tr>						
+									<td>Vermogen</td>
+									<td>$accu_vermogen</td>
+								</tr>
+							</tbody>";
+					
+					//oordopje
+					 }elseif($pro_cat == 9){
+						
+						echo "
+							<tbody>
+								<tr >				
+									<td>Type</td>
+									<td>$oordopje_type</td>
+								</tr>
+								<tr>						
+									<td>Bluetooth</td>
+									<td>$oordopje_bluetooth</td>
+								</tr>
+								<tr>						
+									<td>Noise cancelling</td>
+									<td>$oordopje_noiseCancel</td>
+								</tr>
+								<tr>						
+									<td>Waterbestendig </td>
+									<td>$oordopje_waterBestendig</td>
+								</tr>
+							</tbody>";
+					
+					//koptelefoon
+					 }elseif($pro_cat == 10){
+						
+						echo "
+							<tbody>
+								<tr >				
+									<td>Type</td>
+									<td>$koptelefoon_type</td>
+								</tr>
+								<tr>						
+									<td>Bluetooth</td>
+									<td>$koptelefoon_bluetooth</td>
+								</tr>
+								<tr>						
+									<td>Noise cancelling</td>
+									<td>$koptelefoon_noiseCancel</td>
+								</tr>
+								<tr>						
+									<td>Ingebouwde microfoon</td>
+									<td>$koptelefoon_mic</td>
+								</tr>
+								<tr>						
+									<td>Geluidskwaliteit volgens klanten</td>
+									<td>$koptelefoon_geluidsKwaliteit</td>
+								</tr>
+							</tbody>";
+					
+					 }else{ 						
+						echo "<td>Geen specificaties</td>";
+					}?>
+						
+					</table>
+					
+		<?php if(isset($_SESSION['uid'])){
+        echo '<script>
+                $("button").on("click", function(){
+                    $("#pic1")
+                        .find("img")
+                        .clone()
+                        .addClass("add")
+                        .appendTo("body");
+                        setTimeout(function(){
+                        $(".add").remove();
+                    }, 180000);
+                });
+             </script>'; }?>
 			
-            </body>
-        </html>
+                 
+        
+    </body>
+</html>
