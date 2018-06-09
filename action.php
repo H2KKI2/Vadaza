@@ -260,11 +260,17 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 			if($pro_cat != 2){
 			$pro_title = $pro_keyword.' '.$pro_title;
 			}
+        
 			$pro_opslag = $row['gsm_opslag'];
+            $powerbank_capaciteit = $row['powerbank_capaciteit'];
+        
 			if($pro_cat == 2){
-				$proInfo = $pro_opslag.' -';		
-			}
-			else{
+				$proInfo = $pro_opslag.' - '.$pro_color;		
+			}elseif($pro_cat == 3){
+				$proInfo = ' - '.$pro_color;	
+			}elseif($pro_cat == 6){
+				$proInfo = ' - '.$powerbank_capaciteit;	
+			}else{
 				$proInfo = NULL; 
 			}
 
@@ -272,7 +278,7 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 
 				<div class='col-md-4'>
 							<div class='panel panel-info'>
-								<div class='panel-heading'>$pro_title - $proInfo $pro_color</div>
+								<div class='panel-heading'>$pro_title $proInfo</div>
 								<div class='panel-body'>
 									<img src='product_images/$pro_image' class='center-block' style='width: 250px; height:240px'/>
 								</div>
@@ -316,30 +322,30 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 
 		$sql = "SELECT * FROM cart WHERE p_id = '$p_id' AND user_id = '$user_id'";
 		$run_query = mysqli_query($con,$sql);
-		$count = mysqli_num_rows($run_query);
-
-		if($count > 0){
-
-			echo 
-				"<div class='alert alert-warning'>
-						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-						<b>Product is al toegevoegd aan het winkelmandje!</b>
-				</div>";
-
-		} else {
-			$sql = "INSERT INTO `cart`
+        $count = mysqli_num_rows($run_query);
+		$row = mysqli_fetch_assoc($run_query);
+            $qty = $row['qty'];            
+            $qty += 1;
+            
+		if($count == 0){
+            $sql = "INSERT INTO `cart`
 			(`p_id`, `ip_add`, `user_id`, `qty`) 
 			VALUES ('$p_id','$ip_add','$user_id','1')";
+        }else{
+                $sql = "UPDATE `cart`
+			set qty = '$qty' where p_id = '$p_id'";
+            }
+			
 			
 			if(mysqli_query($con,$sql)){
 
 				echo 
 					"<div class='alert alert-success'>
 						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-						<b>Product is Toegevoegd aan het winkelmandje!</b>
+						<b>Product is toegevoegd aan het winkelmandje!</b>
 					</div>";
 			}
-		}
+		
 
 		}else{
 			//When user is not logged in, cant add product to cart 
@@ -369,13 +375,12 @@ if (isset($_POST["count_item"])) {
 	//When user is logged in then we will count number of item in cart by using user session id
 	if (isset($_SESSION["uid"])) {
 
-		$sql = "SELECT COUNT(*) AS count_item FROM cart WHERE user_id = $_SESSION[uid]";
+		$sql = "SELECT SUM(qty) AS count_item FROM cart WHERE user_id = $_SESSION[uid]";
 
 	}else{
 
-		//When user is not logged in then we will count number of item in cart by using users unique ip address
-		$sql = "SELECT COUNT(*) AS count_item FROM cart WHERE ip_add = '$ip_add' AND user_id < 0";
-
+		//When user is not logged in then display 0
+            
 	}
 
 	
@@ -406,6 +411,7 @@ if (isset($_POST["Common"])) {
 		if (mysqli_num_rows($query) > 0) {
 			$n=0;
 			while ($row=mysqli_fetch_array($query)) {
+            $qty = $row['qty'];  
 				$n++;
 				$product_id = $row["product_id"];
 				$product_title = $row["product_title"];
@@ -418,7 +424,7 @@ if (isset($_POST["Common"])) {
 				$qty = $row["qty"];
 				echo '
 					<div class="row" style="border-bottom: 1px solid #e7e7e7; margin-bottom: 5px;">
-						<div class="col-md-2">'.$n.'</div>
+						<div class="col-md-2">'.$qty.'</div>
 						<div style="margin-bottom: 10px;" class="col-md-3"><img class="img-responsive" src="product_images/'.$product_image.'" /></div>
 						<div style="line-height: 15px;" class="col-md-4">'.$product_title. '<br></br> Kleur: '.$product_color. '</div>
 						<div class="col-md-3">€'.$product_price.'</div>
