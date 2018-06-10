@@ -178,7 +178,9 @@ if(mysqli_num_rows($run_query) > 0){
 		<script src="js/jquery2.js"></script>
         <script src="main.js"></script>
 		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        <script src="js/boostrap-notify.min.js"></script>
+        <script src="js/notification.js"></script>
+		<script src="js/bootstrap-notify.min.js"></script>
+		<script src="js/bootstrap-notify.js"></script>
 
         
 
@@ -251,22 +253,28 @@ if(mysqli_num_rows($run_query) > 0){
 						
 						<div class="preview-same-model"> 
 							<p>Kleur Kiezen:</p>
-							<p class="kiesKleur"><?php if($pro_color_id == 0) { echo "Kleur kiezen niet mogelijk.";} ?></p>
+							
 							<?php
 								$intTeller_models = 0;
 								$intSize_modelArray = count($phone_models);
-								while($intTeller_models < $intSize_modelArray) {
-									$strPhone = $phone_models[$intTeller_models];
-									$keywords = preg_split("/[\s,]+/", $strPhone);
-									$phone_id_pv = $keywords[0];
-									$phone_img_pv = $keywords[1];
-									
-									if($pro_color_id != 0)
-									{
-									echo ("<li><a href='ProductDetails.php?id=$phone_id_pv'><img src='product_images/$phone_img_pv'/></a></li>");
-									}else{}
-									$intTeller_models++;
-								}							
+								
+								if($intSize_modelArray > 1) {
+								
+									while($intTeller_models < $intSize_modelArray) {
+										$strPhone = $phone_models[$intTeller_models];
+										$keywords = preg_split("/[\s,]+/", $strPhone);
+										$phone_id_pv = $keywords[0];
+										$phone_img_pv = $keywords[1];
+										
+										if($pro_color_id != 0)
+										{
+										echo ("<li><a href='ProductDetails.php?id=$phone_id_pv'><img src='product_images/$phone_img_pv'/></a></li>");
+										}else{}
+										$intTeller_models++;					
+									}		
+								}else{
+									echo ("<p class='kiesKleur'>Kleur kiezen niet mogelijk</p>");
+								}								
 							?>
 							
 						</div>    
