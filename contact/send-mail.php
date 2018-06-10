@@ -1,5 +1,5 @@
 <?php
-$to = 'yanuasz@vadaza.be';
+$to = 'support@vadaza.be';
 $subject = $_POST["naam"];
 $message = $_POST["bericht"];
 $from = $_POST["email"];

@@ -1,6 +1,6 @@
 <?php
-require "../db.php";
-$user_name = "maximjanssensj5@gmail.com";
+
+$user_name = "yanu.szapinszky@gmail.com";
 $user_pass = substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!$%*#+-", 5)), 0, 8);
 $tabel = "user_info";
 $id_query = "select * from user_info where email like '$user_name';";
@@ -9,10 +9,6 @@ $row = mysqli_fetch_assoc($result);
 $idnaam = "user_id";
 
 $id = $row['user_id'];
-
-
-    
-
 
 $hash = password_hash($user_pass, PASSWORD_DEFAULT);
     
@@ -27,15 +23,11 @@ else{
 	echo     "Er is iets fout gegaan.";
 }
 $conn->close();
-
-
-function random_str($length, $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!$%*#+-')
-{
-    $str = '';
-    $max = mb_strlen($keyspace, '8bit') - 1;
-    for ($i = 0; $i < $length; ++$i) {
-        $str .= $keyspace[random_int(0, $max)];
-    }
-    return $str;
+}
+else{
+    header("Location: https://vadaza.be");
+die();
 }
 ?>
+
+

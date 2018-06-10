@@ -1,7 +1,6 @@
 <?php
 if (isset($_GET["register"])) {
-	
-	?>
+?>
 
 <!DOCTYPE html>
 <html>
@@ -18,6 +17,10 @@ if (isset($_GET["register"])) {
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" /> 
 		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+		<script src="js/notification.js"></script>
+		<script src="js/bootstrap-notify.min.js"></script>
+		<script src="js/bootstrap-notify.js"></script>
+		
 	</head>
 <body>
 
@@ -33,7 +36,7 @@ if (isset($_GET["register"])) {
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
-				<div style="margin-left:25%; width:700px;"class="panel panel-primary">
+				<div class="registrationForm panel panel-primary">
 					<div class="panel-heading">Registratie</div>
 					<div class="panel-body">
 					

@@ -66,7 +66,7 @@
                         <li class="divider"></li>
                         <li><a href="customer_order.php" style="text-decoration:none; color:blue;">Orders</a></li>
                         <li class="divider"></li>
-                        <li><a href="" style="text-decoration:none; color:blue;">Wachtwoord veranderen</a></li>
+                        <li><a href="Change_pass.php" style="text-decoration:none; color:blue;">Wachtwoord veranderen</a></li>
 
                         <?php
 

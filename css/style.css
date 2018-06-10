@@ -56,9 +56,33 @@
 	width: 90% !important;
 }
 
+/* forms (change pass, forgot pass) */ 
+.form{
+	margin-left:auto !important;
+	margin-right:auto !important;
+	display:block !important;
+	margin-top:25%; 
+	width:40%;
+}
 
+.changePass-text{
+	margin:auto !important;
+	display:block !important;
+}
 
+.btnChangePass{
+	width: 75% !important;
+	margin:auto !important;
+	display:block !important;
+}
 
+.registrationForm{
+	margin-left:auto !important;
+	margin-right:auto !important;
+	display:block !important;
+	margin-top:10%; 
+	width:56%;
+}
 
 
 

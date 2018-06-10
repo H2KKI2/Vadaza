@@ -10,7 +10,7 @@
 	<meta name="description" content="A brief description of the website."/>
   
   <!-- TITLE -->
-	<title>contact</title>
+	<title>Contact</title>
 	
   <!-- LINKS -->
 	<link rel="stylesheet" href="style.css">
@@ -112,7 +112,7 @@
 
 <!--support mail -->
 <div  class="contact-form">
-<form action="send-mail.php" method="post">
+<form action="send-mail.php" method="POST">
 
 	<div class="container login-wrapper">
 
