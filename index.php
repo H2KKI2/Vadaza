@@ -18,11 +18,15 @@ if(isset($_SESSION["uid"])){
 		<script src="main.js"></script>
 		<script src="js/cat.js"></script>
 		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>	
+		<script src="js/notification.js"></script>
+		<script src="js/bootstrap-notify.min.js"></script>
+		<script src="js/bootstrap-notify.js"></script>
 		
 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-red.min.css" /> 
-        <script src="js/boostrap-notify.min.js"></script>
+		
+
 		
 </head>
 

@@ -150,6 +150,7 @@ $(document).ready(function(){
 		})
 	})
 	
+	
 	$("body").delegate("#product","click",function(event){
 		var pid = $(this).attr("pid");
 		event.preventDefault();

@@ -23,6 +23,10 @@ include_once 'db.php';
 		<script src="main.js"></script>
 				
 		<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+		
+		<script src="js/notification.js"></script>
+		<script src="js/bootstrap-notify.min.js"></script>
+		<script src="js/bootstrap-notify.js"></script>
         
 </head>
 <body>

@@ -340,20 +340,18 @@ if(isset($_POST["get_seleted_Category"]) || isset($_POST["selectBrand"]) || isse
 			if(mysqli_query($con,$sql)){
 
 				echo 
-					"<div class='alert alert-success'>
-						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-						<b>Product is toegevoegd aan het winkelmandje!</b>
-					</div>";
+					"<script type='text/javascript'>",
+						"success('Product is toegevoegd aan winkelmandje.');",
+					"</script>";
 			}
 		
 
 		}else{
 			//When user is not logged in, cant add product to cart 
 			echo 
-					"<div class='alert alert-danger'>
-						<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-						<b>Sorry maar u moet eerst inloggen voor u een product kan toevoegen aan het winkelmandje!</b>
-					</div>";
+					"<script type='text/javascript'>",
+						"danger('U moet eerst ingelogd zijn voordat u een product kan toevoegen.');",
+					"</script>";
 
 		}
 

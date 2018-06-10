@@ -72,7 +72,7 @@
 										</div>
 										
 										<br>
-										<a href="#" style="color:blue; margin-left: 2%; list-style:none;">Wachtwoord vergeten?</a>
+										<a href="password_reset.php" style="color:blue; margin-left: 2%; list-style:none;">Wachtwoord vergeten?</a>
 										<input type="submit" class="btn btn-success" value="Aanmelden" style="float:right; margin-right: 2%;">
                                         <div><a href="customer_registration.php?register=1" style="color:blue; margin-left: 2%;">Registreren</a></div>
 										

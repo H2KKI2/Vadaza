@@ -17,82 +17,66 @@ if (isset($_POST["f_name"])) {
 if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empty($repassword) ||
 	empty($mobile) || empty($address1) || empty($address2)){
 		
-		echo "
-			<div class='alert alert-warning'>
-				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><b>Vull alle vakjes in!</b>
-			</div>
-		";
+		echo 
+				"<script type='text/javascript'>",
+					"danger('Vul alle vakjes in.');",
+				"</script>";
 		exit();
 	} else {
 		if(!preg_match($name,$f_name)){
-		echo "
-			<div class='alert alert-warning'>
-				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>Deze $f_name is niet geldig!</b>
-			</div>
-		";
+		echo 
+				"<script type='text/javascript'>",
+					"danger('Uw voornaam is niet geldig.');",
+				"</script>";
 		exit();
 	}
 	if(!preg_match($name,$l_name)){
-		echo "
-			<div class='alert alert-warning'>
-				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>Deze $l_name is niet geldig!</b>
-			</div>
-		";
+		echo 
+				"<script type='text/javascript'>",
+					"danger('Uw achternaam is niet geldig.');",
+				"</script>";
 		exit();
 	}
 	if(!preg_match($emailValidation,$email)){
-		echo "
-			<div class='alert alert-warning'>
-				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>Deze $email is niet geldig!</b>
-			</div>
-		";
+		echo 
+				"<script type='text/javascript'>",
+					"danger('Deze email is niet geldig.');",
+				"</script>";
 		exit();
 	}
 	if(strlen($password) < 6 ){
-		echo "
-			<div class='alert alert-warning'>
-				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>Wachtwoord is te zwak!</b>
-			</div>
-		";
+		echo 
+				"<script type='text/javascript'>",
+					"danger('Wachtwoord is te zwak.');",
+				"</script>";
 		exit();
 	}
 	if(strlen($repassword) < 6 ){
-		echo "
-			<div class='alert alert-warning'>
-				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>Wachtwoord is te zwak!</b>
-			</div>
-		";
+		echo 
+				"<script type='text/javascript'>",
+					"danger('Wachtwoord is te zwak.');",
+				"</script>";
 		exit();
 	}
 	if($password != $repassword){
-		echo "
-			<div class='alert alert-warning'>
-				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>Wachtwoored is niet hetzelfde!</b>
-			</div>
-		";				exit();
+		echo 
+				"<script type='text/javascript'>",
+					"danger('Wachtwoord is niet hetzelfde.');",
+				"</script>";		
+		exit();
 	}
 	if(!preg_match($number,$mobile)){
-		echo "
-			<div class='alert alert-warning'>
-				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>U nummer $mobile is niet geldig!</b>
-			</div>
-		";
+		echo 
+				"<script type='text/javascript'>",
+					"danger('Uw telefoonnummer is niet geldig.');",
+				"</script>";
 		exit();
 	}
 	if(!(strlen($mobile) == 10)){
-		echo "
-			<div class='alert alert-warning'>
-				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>Uw telefoonnummer is niet geldig!</b>
-			</div>
-		";
+		echo 
+				"<script type='text/javascript'>",
+					"danger('Uw telefoonnummer is niet geldig.');",
+				"</script>";
 		exit();
 	}
 	
@@ -100,12 +84,10 @@ if(empty($f_name) || empty($l_name) || empty($email) || empty($password) || empt
 	$check_query = mysqli_query($con,$sql);
 	$count_email = mysqli_num_rows($check_query);
 	if($count_email > 0){
-		echo "
-			<div class='alert alert-danger'>
-				<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-				<b>Deze email wordt al reeds gebruikt. Kies een andere email!</b>
-			</div>
-		";
+		echo 
+				"<script type='text/javascript'>",
+					"danger('Deze email wordt al reeds gebruikt.');",
+				"</script>";
 		exit();
 	} else {
 		$password = password_hash($password, PASSWORD_DEFAULT);
